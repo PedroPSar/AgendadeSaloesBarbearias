@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "780992085667",
+    "firebase_url": "https://agendasaloesbarbearias.firebaseio.com",
+    "project_id": "agendasaloesbarbearias",
+    "storage_bucket": "agendasaloesbarbearias.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780992085667:android:7cc8918e495e9372bc0916",
+        "android_client_info": {
+          "package_name": "com.pedro.agendadesalesebarbearias"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780992085667-q9stobih5othromgcvmkfi07un4roamg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pedro.agendadesalesebarbearias",
+            "certificate_hash": "d33d14a78e91c68d65c9cf6a134f8a405ef3c72e"
+          }
+        },
+        {
+          "client_id": "780992085667-k0ac7cpnrt842g5n4e697lhv8ea5stj0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8ejoC6KwIcHy_VY8q87CiW5arEYIV6G8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780992085667-k0ac7cpnrt842g5n4e697lhv8ea5stj0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

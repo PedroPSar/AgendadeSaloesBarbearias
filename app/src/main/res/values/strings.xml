@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Agenda de Salões e Barbearias</string>
+
+    <!-- Login Activity -->
+    <string name="sign_up_text">Cadastre-se</string>
+    <string name="btn_login_text">Logar</string>
+    <string name="dont_have_an_account">Não tem uma conta?</string>
+    <string name="email_edit_hint">E-mail</string>
+    <string name="password_edit_hint">Password</string>
+</resources>
