@@ -7,4 +7,16 @@
     <string name="dont_have_an_account">Não tem uma conta?</string>
     <string name="email_edit_hint">E-mail</string>
     <string name="password_edit_hint">Password</string>
+
+    <!-- Sign up Activity -->
+    <string name="already_have_an_account">Já tem conta?</string>
+    <string name="sign_in">Faça login!</string>
+    <string name="user_name_edit_hint">Nome de Usuário</string>
+    <string name="btn_sign_up_text">Cadastrar</string>
+    <string name="text_sign_up_title">Cadastro</string>
+    <string name="radio_client">Cliente</string>
+    <string name="radio_prof">Profissional</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

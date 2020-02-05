@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".fragment.SignUpClientFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_main"
@@ -14,7 +14,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editTxtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_user_name_24dp"
+            android:drawablePadding="@dimen/icon_edit_text_padding"
+            android:ems="10"
+            android:hint="@string/user_name_edit_hint"
+            android:inputType="textEmailAddress"
+            app:backgroundTint="@color/colorPrimary" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/editTxtEmail"
@@ -45,40 +59,40 @@
             app:backgroundTint="@color/colorPrimary" />
 
         <Button
-            android:id="@+id/btnLogar"
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/button_background"
-            android:text="@string/btn_login_text"
+            android:text="@string/btn_sign_up_text"
             app:theme="@style/ButtonTheme" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_signUp"
+            android:id="@+id/ll_signIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_dontHaveAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/dont_have_an_account" />
+                android:text="@string/already_have_an_account" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_signUp"
                 style="@style/FeaturedTextTheme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/left_sign_up_margin"
-                android:text="@string/sign_up_text" />
+                android:text="@string/sign_in" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
