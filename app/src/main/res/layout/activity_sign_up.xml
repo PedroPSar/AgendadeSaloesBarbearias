@@ -48,11 +48,12 @@
             android:text="@string/radio_client"
             android:textColor="@android:color/black"
             android:textSize="@dimen/text_radio_size"
+            android:checked="true"
             android:onClick="onRadioButtonClicked"
             />
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radioBtn_prof"
+            android:id="@+id/radioBtn_commerce"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_prof"

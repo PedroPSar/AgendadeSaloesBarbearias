@@ -8,18 +8,36 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.pedro.agendadesalesebarbearias.fragment.CommerceFragment;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.fragment.SignUpClientFragment;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction fragmentTransaction;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+
+    private boolean isClientFragment = true;
+
+    private SignUpClientFragment clientFragment;
+    private CommerceFragment commerceFragment;
+
+    private static final String CLIENT_TAG = "CLIENT_FRAGMENT";
+    private static final String COMMERCE_TAG = "COMMERCE_FRAGMENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        clientFragment = new SignUpClientFragment();
+        commerceFragment  = new CommerceFragment();
+
+        fragmentManager = getSupportFragmentManager();
+
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, clientFragment, CLIENT_TAG);
+        fragmentTransaction.commit();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -30,21 +48,32 @@ public class SignUpActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.radioBtn_client:
                 if (checked)
-                changeFragment();
+                    if(!isClientFragment){
+                        changeClientFragment();
+                        isClientFragment = true;
+                    }
                     break;
-            case R.id.radioBtn_prof:
+            case R.id.radioBtn_commerce:
                 if (checked)
+                    if(isClientFragment){
+                        changeCommerceFragment();
+                        isClientFragment = false;
+                    }
 
                     break;
         }
     }
 
-    public void changeFragment(){
-        SignUpClientFragment fragment = new SignUpClientFragment();
+    public void changeClientFragment(){
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right,
-                R.anim.enter_from_right, R.anim.exit_to_right);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.add(R.id.fragment_container, fragment, "CLIENT_FRAGMENT").commit();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.replace(R.id.fragment_container, clientFragment, CLIENT_TAG).commit();
     }
+
+    public void changeCommerceFragment(){
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
+        fragmentTransaction.replace(R.id.fragment_container, commerceFragment, COMMERCE_TAG).commit();
+    }
+
 }

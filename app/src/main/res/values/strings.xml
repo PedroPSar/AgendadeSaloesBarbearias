@@ -17,6 +17,15 @@
     <string name="radio_client">Cliente</string>
     <string name="radio_prof">Profissional</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Sign up Commerce Fragment -->
+    <string name="radio_beautyParlor">Salão</string>
+    <string name="radio_barbershop">Barbearia</string>
+    <string name="commerce_name_edit_hint">Nome do estabelecimento</string>
+
+    <!-- FirebaseControl -->
+    <string name="sign_up_is_successful">Cadastro realizado com sucesso</string>
+    <string name="enter_a_stronger_password">Digite uma senha mais forte</string>
+    <string name="invalid_email">E-mail inválido</string>
+    <string name="this_email_is_already_in_use">Esse e-mail já está em uso</string>
+    <string name="error_when_registering">Erro ao efetuar o cadastro</string>
 </resources>
