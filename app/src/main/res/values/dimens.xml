@@ -8,4 +8,7 @@
     <!--Sign Up Activity -->
     <dimen name="text_title_size">26sp</dimen>
     <dimen name="text_radio_size">18sp</dimen>
+
+    <!-- Commerce User Main Activity -->
+    <dimen name="commerce_name_bg_size">16sp</dimen>
 </resources>
