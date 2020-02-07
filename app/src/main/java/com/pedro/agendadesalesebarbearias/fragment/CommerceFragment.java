@@ -11,12 +11,17 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RadioGroup;
 
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
+import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
+import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
 
 
 /**
@@ -27,8 +32,13 @@ public class CommerceFragment extends Fragment {
     private AppCompatEditText edTxtCommerceName;
     private AppCompatEditText edTxtEmail;
     private AppCompatEditText edTxtPassword;
+    private RadioGroup radioGroup;
+    private AppCompatRadioButton radioButtonBeautyParlor;
+    private AppCompatRadioButton radioButtonBarberShop;
+    private String type = "";
 
     private LinearLayoutCompat llSignIn;
+    private Button btnSignUpCommerce;
 
     public CommerceFragment() {
         // Required empty public constructor
@@ -51,8 +61,29 @@ public class CommerceFragment extends Fragment {
         edTxtCommerceName = view.findViewById(R.id.editTxtCommerceName);
         edTxtEmail = view.findViewById(R.id.editTxtEmail);
         edTxtPassword = view.findViewById(R.id.editTextPassword);
-
+        radioGroup = view.findViewById(R.id.radioGroup_type);
         llSignIn = view.findViewById(R.id.ll_signIn);
+        btnSignUpCommerce = view.findViewById(R.id.btnSignUpCommerce);
+
+        radioButtonBeautyParlor = view.findViewById(R.id.radioBtn_beautyParlor);
+        radioButtonBarberShop = view.findViewById(R.id.radioBtn_barbershop);
+
+        type = SalaoBarbearia.BEAUTY_PARLOR_TYPE;
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioBtn_beautyParlor:
+                        type = SalaoBarbearia.BEAUTY_PARLOR_TYPE;
+                        break;
+
+                    case R.id.radioBtn_barbershop:
+                        type = SalaoBarbearia.BARBERSHOP_TYPE;
+                        break;
+                }
+            }
+        });
 
         llSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,23 +92,21 @@ public class CommerceFragment extends Fragment {
                 startActivity(intent);
             }
         });
-    }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((AppCompatRadioButton) view).isChecked();
+        btnSignUpCommerce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radioBtn_beautyParlor:
-                if (checked)
+                SalaoBarbearia commerce = new SalaoBarbearia();
+                commerce.setName(edTxtCommerceName.getText().toString());
+                commerce.setEmail(edTxtEmail.getText().toString());
+                commerce.setPassword(edTxtPassword.getText().toString());
+                commerce.setType(type);
 
-                break;
-            case R.id.radioBtn_barbershop:
-                if (checked)
+                FirebaseControl.signUpCommerce(getActivity(), commerce);
+            }
+        });
 
-                break;
-        }
     }
 
 }

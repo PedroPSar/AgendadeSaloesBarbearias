@@ -50,7 +50,7 @@ public class Client {
         this.password = password;
     }
 
-    public void salveClient(){
+    public void saveClient(){
         DatabaseReference databaseReference = ConfigurationFirebase.getFirebaseReference();
         databaseReference.child(FirebaseControl.CLIENTS_DB).child( getId() ).setValue(this);
     }

@@ -1,6 +1,9 @@
 package com.pedro.agendadesalesebarbearias.model;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
+import com.pedro.agendadesalesebarbearias.control.ConfigurationFirebase;
+import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
 
 import java.util.ArrayList;
 
@@ -15,6 +18,9 @@ public class SalaoBarbearia {
     private ArrayList<Service> services;
     private Address address;
     private float rating;
+
+    public static final String BEAUTY_PARLOR_TYPE = "1";
+    public static final String BARBERSHOP_TYPE = "2";
 
     public SalaoBarbearia() {
 
@@ -62,6 +68,7 @@ public class SalaoBarbearia {
         this.type = type;
     }
 
+    @Exclude
     public ArrayList<Professional> getProfessional() {
         return professional;
     }
@@ -70,6 +77,7 @@ public class SalaoBarbearia {
         this.professional = professional;
     }
 
+    @Exclude
     public ArrayList<Service> getServices() {
         return services;
     }
@@ -78,6 +86,7 @@ public class SalaoBarbearia {
         this.services = services;
     }
 
+    @Exclude
     public Address getAddress() {
         return address;
     }
@@ -92,5 +101,10 @@ public class SalaoBarbearia {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public void saveCommerce(){
+        DatabaseReference databaseReference = ConfigurationFirebase.getFirebaseReference();
+        databaseReference.child(FirebaseControl.COMMERCE_DB).child( getId() ).setValue(this);
     }
 }

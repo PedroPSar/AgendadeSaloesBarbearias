@@ -17,6 +17,8 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
+import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
+import com.pedro.agendadesalesebarbearias.model.Client;
 
 
 public class SignUpClientFragment extends Fragment {
@@ -27,7 +29,6 @@ public class SignUpClientFragment extends Fragment {
 
     private LinearLayoutCompat llSignIn;
     private Button btnSignUp;
-    private FirebaseAuth auth;
 
     public SignUpClientFragment() {
         // Required empty public constructor
@@ -59,9 +60,19 @@ public class SignUpClientFragment extends Fragment {
             }
         });
 
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Client client = new Client();
+                client.setName(edTxtUserName.getText().toString());
+                client.setEmail(edTxtEmail.getText().toString());
+                client.setPassword(edTxtPassword.getText().toString());
+
+                FirebaseControl.signUpClient(getActivity(), client);
+            }
+        });
+
      }
 
-     private void signUpClient(){
-
-     }
  }
