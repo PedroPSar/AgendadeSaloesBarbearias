@@ -28,4 +28,11 @@
     <string name="invalid_email">E-mail inválido</string>
     <string name="this_email_is_already_in_use">Esse e-mail já está em uso</string>
     <string name="error_when_registering">Erro ao efetuar o cadastro</string>
+
+    <!-- Client User Activity -->
+    <string name="main_user_tab">Principal</string>
+    <string name="schedule_user_tab">Agenda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
