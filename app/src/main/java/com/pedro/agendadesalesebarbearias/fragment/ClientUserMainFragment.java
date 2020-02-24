@@ -3,6 +3,7 @@ package com.pedro.agendadesalesebarbearias.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.ViewGroup;
 import com.pedro.agendadesalesebarbearias.R;
 
 public class ClientUserMainFragment extends Fragment {
+
+    RecyclerView recyclerView;
 
 
     public ClientUserMainFragment() {
@@ -26,8 +29,14 @@ public class ClientUserMainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_client_user_main, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_client_user_main, container, false);
+
+        recyclerView = view.findViewById(R.id.rv_main);
+
+
+
+        return view;
     }
 
 }

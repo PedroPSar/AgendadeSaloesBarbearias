@@ -13,6 +13,7 @@ public class SalaoBarbearia {
     private String email;
     private String password;
     private String name;
+    private String tel;
     private String type;
     private ArrayList<Professional> professional;
     private ArrayList<Service> services;
@@ -58,6 +59,14 @@ public class SalaoBarbearia {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public String getType() {

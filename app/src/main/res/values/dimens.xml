@@ -11,4 +11,8 @@
 
     <!-- Commerce User Main Activity -->
     <dimen name="commerce_name_bg_size">16sp</dimen>
+    <dimen name="rv_list_txt_size1">16sp</dimen>
+    <dimen name="rv_list_txt_size2">14sp</dimen>
+    <dimen name="margin_end_lbls">4dp</dimen>
+    <dimen name="rv_list_card_view_padding">8dp</dimen>
 </resources>
