@@ -95,7 +95,6 @@ public class SalaoBarbearia {
         this.services = services;
     }
 
-    @Exclude
     public Address getAddress() {
         return address;
     }

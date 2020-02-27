@@ -21,6 +21,12 @@
     <string name="radio_beautyParlor">Salão</string>
     <string name="radio_barbershop">Barbearia</string>
     <string name="commerce_name_edit_hint">Nome do estabelecimento</string>
+    <string name="lbl_adress">Endereço</string>
+    <string name="hint_street">Rua</string>
+    <string name="hint_num">Número</string>
+    <string name="hint_district">Bairro</string>
+    <string name="hint_city">Cidade</string>
+    <string name="hint_state">Estado</string>
 
     <!-- FirebaseControl -->
     <string name="sign_up_is_successful">Cadastro realizado com sucesso</string>

@@ -6,121 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CommerceFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTxtCommerceName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/ic_user_name_24dp"
-            android:drawablePadding="@dimen/icon_edit_text_padding"
-            android:hint="@string/commerce_name_edit_hint"
-            android:inputType="textEmailAddress"
-            app:backgroundTint="@color/colorPrimary" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTxtCommerceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_user_name_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/commerce_name_edit_hint"
+                android:inputType="textEmailAddress"
+                app:backgroundTint="@color/colorPrimary" />
 
-        <RadioGroup
-            android:id="@+id/radioGroup_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="horizontal" >
-
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioBtn_beautyParlor"
+            <RadioGroup
+                android:id="@+id/radioGroup_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="@string/radio_beautyParlor"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_radio_size"
-                android:checked="true"
-                />
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal" >
 
-            <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioBtn_barbershop"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radioBtn_beautyParlor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/radio_beautyParlor"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_radio_size"
+                    android:checked="true"
+                    />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radioBtn_barbershop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_barbershop"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_radio_size"
+                    />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTxtEmail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/radio_barbershop"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_radio_size"
-                />
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_email_hint_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/email_edit_hint"
+                android:inputType="textEmailAddress"
+                app:backgroundTint="@color/colorPrimary" />
 
-        </RadioGroup>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTxtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/ic_email_hint_24dp"
-            android:drawablePadding="@dimen/icon_edit_text_padding"
-            android:hint="@string/email_edit_hint"
-            android:inputType="textEmailAddress"
-            app:backgroundTint="@color/colorPrimary" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="40dp"
-            android:drawableStart="@drawable/ic_password_hint_24dp"
-            android:drawablePadding="@dimen/icon_edit_text_padding"
-            android:hint="@string/password_edit_hint"
-            android:inputType="textPassword"
-            app:backgroundTint="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/btnSignUpCommerce"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_background"
-            android:text="@string/btn_sign_up_text"
-            app:theme="@style/ButtonTheme" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_signIn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:drawableStart="@drawable/ic_password_hint_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/password_edit_hint"
+                android:inputType="textPassword"
+                app:backgroundTint="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_dontHaveAccount"
+                android:id="@+id/txtLabelAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/already_have_an_account" />
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:textSize="@dimen/txt_address_size"
+                android:textColor="@android:color/black"
+                android:text="@string/lbl_adress" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_signUp"
-                style="@style/FeaturedTextTheme"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextStreet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_street"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_num"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextDistrict"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_district"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextStreet" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_city"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/editTextState"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDistrict" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/hint_state"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextDistrict" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btnSignUpCommerce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_background"
+                android:text="@string/btn_sign_up_text"
+                app:theme="@style/ButtonTheme" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_signIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/left_sign_up_margin"
-                android:text="@string/sign_in" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_dontHaveAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/already_have_an_account" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_signUp"
+                    style="@style/FeaturedTextTheme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/left_sign_up_margin"
+                    android:text="@string/sign_in" />
 
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
 
 </FrameLayout>

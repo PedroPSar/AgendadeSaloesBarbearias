@@ -19,8 +19,10 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 
 import com.pedro.agendadesalesebarbearias.R;
+import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
 import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
+import com.pedro.agendadesalesebarbearias.model.Address;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
 
 
@@ -32,6 +34,11 @@ public class CommerceFragment extends Fragment {
     private AppCompatEditText edTxtCommerceName;
     private AppCompatEditText edTxtEmail;
     private AppCompatEditText edTxtPassword;
+    private AppCompatEditText edTxtStreet;
+    private AppCompatEditText edTxtNum;
+    private AppCompatEditText edTxtDistrict;
+    private AppCompatEditText edTxtCity;
+    private AppCompatEditText edTxtState;
     private RadioGroup radioGroup;
     private AppCompatRadioButton radioButtonBeautyParlor;
     private AppCompatRadioButton radioButtonBarberShop;
@@ -61,6 +68,12 @@ public class CommerceFragment extends Fragment {
         edTxtCommerceName = view.findViewById(R.id.editTxtCommerceName);
         edTxtEmail = view.findViewById(R.id.editTxtEmail);
         edTxtPassword = view.findViewById(R.id.editTextPassword);
+        edTxtStreet = view.findViewById(R.id.editTextStreet);
+        edTxtNum = view.findViewById(R.id.editTextNumber);
+        edTxtDistrict = view.findViewById(R.id.editTextDistrict);
+        edTxtCity = view.findViewById(R.id.editTextCity);
+        edTxtState = view.findViewById(R.id.editTextState);
+
         radioGroup = view.findViewById(R.id.radioGroup_type);
         llSignIn = view.findViewById(R.id.ll_signIn);
         btnSignUpCommerce = view.findViewById(R.id.btnSignUpCommerce);
@@ -103,10 +116,26 @@ public class CommerceFragment extends Fragment {
                 commerce.setPassword(edTxtPassword.getText().toString());
                 commerce.setType(type);
 
+                Address address = new Address();
+                address.setStreet(edTxtStreet.getText().toString());
+                address.setHouseNumber(edTxtNum.getText().toString());
+                address.setDistrict(edTxtDistrict.getText().toString());
+                address.setCity(edTxtCity.getText().toString());
+                address.setState(edTxtState.getText().toString());
+
+                commerce.setAddress(address);
+
                 FirebaseControl.signUpCommerce(getActivity(), commerce);
+
+                openCommerceUserMainActivity();
             }
         });
 
+    }
+
+    private void openCommerceUserMainActivity(){
+        Intent intent = new Intent(getActivity(), CommerceUserMainActivity.class);
+        startActivity(intent);
     }
 
 }

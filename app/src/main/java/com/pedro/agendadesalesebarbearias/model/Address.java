@@ -2,10 +2,10 @@ package com.pedro.agendadesalesebarbearias.model;
 
 public class Address {
 
-    private String State;
+    private String state;
     private String city;
     private String district;
-    private String Street;
+    private String street;
     private String houseNumber;
 
     public Address() {
@@ -13,11 +13,11 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getCity() {
@@ -37,11 +37,11 @@ public class Address {
     }
 
     public String getStreet() {
-        return Street;
+        return street;
     }
 
     public void setStreet(String street) {
-        Street = street;
+        this.street = street;
     }
 
     public String getHouseNumber() {
