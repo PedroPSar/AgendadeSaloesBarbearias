@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.activity.ClientUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
+import com.pedro.agendadesalesebarbearias.activity.MainActivity;
 import com.pedro.agendadesalesebarbearias.model.Client;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
 
@@ -158,9 +160,9 @@ public class FirebaseControl {
     public static void checkLogin(final Context context){
 
         auth = ConfigurationFirebase.getFirebaseAuth();
-        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
         if (auth.getCurrentUser() != null) {
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
             databaseReferenceClient = ConfigurationFirebase.getFirebaseReference().child(CLIENTS_DB).child(userId);
             databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference().child(COMMERCE_DB).child(userId);
 
@@ -168,7 +170,7 @@ public class FirebaseControl {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.exists()) {
-                        openCommerceUserMainActivity(context);
+                        openCommerceUserMainActivity( context );
                     }
                 }
 
@@ -196,7 +198,47 @@ public class FirebaseControl {
 
             databaseReferenceClient.addListenerForSingleValueEvent(valueEventListenerClient);
 
+        }else {
+            openLoginMainActivity( context );
         }
+
+    }
+
+    public static void signOut(){
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        if ( auth.getCurrentUser() != null ) {
+            auth.signOut();
+        }
+    }
+
+    public static void validateLogin(final Context context, String email, String password){
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if(task.isSuccessful()){
+                            checkLogin(context);
+                        }else {
+                            String errorExcep = "";
+
+                            try{
+                                throw task.getException();
+                            } catch (FirebaseAuthInvalidUserException e) {
+                                errorExcep = context.getString(R.string.error_email_not_correct);
+                            } catch (FirebaseAuthInvalidCredentialsException e) {
+                                errorExcep = context.getString(R.string.error_passwaord_not_correct);;
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                            Toast.makeText(context, errorExcep, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
     }
 
     private static void openClientUserMainActivity(Context context){
@@ -206,6 +248,11 @@ public class FirebaseControl {
 
     private static void openCommerceUserMainActivity(Context context){
         Intent intent = new Intent(context, CommerceUserMainActivity.class);
+        context.startActivity(intent);
+    }
+
+    private static void openLoginMainActivity(Context context){
+        Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
 

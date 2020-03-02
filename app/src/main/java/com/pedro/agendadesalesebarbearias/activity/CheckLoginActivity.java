@@ -1,4 +1,4 @@
-package com.pedro.agendadesalesebarbearias;
+package com.pedro.agendadesalesebarbearias.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.pedro.agendadesalesebarbearias.R;
+import com.pedro.agendadesalesebarbearias.asynctasks.CheckLoginAsyncTask;
 
 public class CheckLoginActivity extends AppCompatActivity {
 
@@ -21,5 +23,8 @@ public class CheckLoginActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(R.drawable.loading)
                 .into(loadingGif);
+
+        CheckLoginAsyncTask task = new CheckLoginAsyncTask();
+        task.execute(this);
     }
 }

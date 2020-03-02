@@ -32,7 +32,7 @@
             app:backgroundTint="@color/colorPrimary" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/editTxtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
