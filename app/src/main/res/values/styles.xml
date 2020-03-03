@@ -19,4 +19,14 @@
         <item name="android:textSize">@dimen/button_text_size</item>
     </style>
 
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/toolbar_text_size</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:elevation">@dimen/toolbar_elevation</item>
+    </style>
+
+    <dimen name="toolbar_text_size">16sp</dimen>
+    <dimen name="toolbar_elevation">6dp</dimen>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.pedro.agendadesalesebarbearias.R;
+import com.pedro.agendadesalesebarbearias.UserClientDetailsActivity;
 import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+                Intent intent = new Intent(MainActivity.this, UserClientDetailsActivity.class);
                 startActivity(intent);
             }
         });
