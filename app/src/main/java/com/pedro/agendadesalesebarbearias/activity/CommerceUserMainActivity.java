@@ -19,9 +19,9 @@ public class CommerceUserMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commerce_user_main);
 
-        btnDeslogar = findViewById( R.id.btnDeslogar );
+        //btnDeslogar = findViewById( R.id.btnDeslogar );
 
-        btnDeslogar.setOnClickListener(new View.OnClickListener() {
+        /*btnDeslogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseControl.signOut();
@@ -29,6 +29,6 @@ public class CommerceUserMainActivity extends AppCompatActivity {
                 startActivity( intent );
                 finish();
             }
-        });
+        });*/
     }
 }

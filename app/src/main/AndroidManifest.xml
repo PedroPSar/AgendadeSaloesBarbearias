@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserClientDetailsActivity"></activity>
+        <activity android:name=".CommerceEditInfoActivity"></activity>
+        <activity android:name=".activity.UserClientDetailsActivity" />
         <activity android:name=".activity.CheckLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +21,7 @@
         <activity android:name=".activity.ClientUserMainActivity" />
         <activity android:name=".activity.CommerceUserMainActivity" />
         <activity android:name=".activity.SignUpActivity" />
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
     </application>
 
 </manifest>

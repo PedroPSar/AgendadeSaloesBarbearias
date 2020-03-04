@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.pedro.agendadesalesebarbearias.R;
-import com.pedro.agendadesalesebarbearias.UserClientDetailsActivity;
 import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
 
 public class MainActivity extends AppCompatActivity {

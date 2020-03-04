@@ -48,4 +48,32 @@
     <string name="lbl_rating">Avaliação:</string>
     <string name="lbl_street">Rua:</string>
     <string name="lbl_num">Nº </string>
+
+    <!-- Commerce View Main Fragment  -->
+    <string name="lbl_services">Serviços</string>
+    <string name="lbl_employees">Funcionários</string>
+
+    <!-- Commerce View Clients Fragment -->
+    <string name="lbl_clients">Clientes</string>
+
+    <!-- Commerce View Reports Fragment -->
+    <string name="lbl_reports">Relatórios</string>
+
+    <!-- Commerce View Schedule Fragment -->
+    <string name="lbl_schedule">Agenda</string>
+
+    <!-- Commerce Edit Info Activity -->
+    <string name="txtTitleEditInfo">Editar Informações</string>
+    <string name="lbl_background_img_edit_info">Imagem de fundo</string>
+    <string name="lbl_logo_img_edit_info">Logo</string>
+    <string name="lbl_commerce_name_edit_info">Nome da empresa</string>
+    <string name="lbl_commerce_email_edit_info">Email</string>
+    <string name="lbl_commerce_Telephone_edit_info">Telefone</string>
+    <string name="lbl_commerce_type_edit_info">Tipo de empresa</string>
+    <string name="lbl_commerce_address_edit_info">Endereço</string>
+    <string name="lbl_commerce_street_edit_info">Rua:</string>
+    <string name="lbl_commerce_num_edit_info">Nº</string>
+    <string name="lbl_commerce_district_edit_info">Bairro:</string>
+    <string name="lbl_commerce_city_edit_info">Cidade:</string>
+    <string name="lbl_commerce_state_edit_info">Estado:</string>
 </resources>
