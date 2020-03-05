@@ -5,12 +5,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
-import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.adapter.PagerAdapter;
-import com.pedro.agendadesalesebarbearias.fragment.ClientUserMainFragment;
-import com.pedro.agendadesalesebarbearias.fragment.ScheduleFragment;
+import com.pedro.agendadesalesebarbearias.fragment.ClientViewMainFragment;
+import com.pedro.agendadesalesebarbearias.fragment.ClientViewScheduleFragment;
 
 public class ClientUserMainActivity extends AppCompatActivity {
 
@@ -32,8 +31,8 @@ public class ClientUserMainActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager){
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        pagerAdapter.addFragment(new ClientUserMainFragment(), getString(R.string.main_user_tab));
-        pagerAdapter.addFragment(new ScheduleFragment(), getString(R.string.schedule_user_tab));
+        pagerAdapter.addFragment(new ClientViewMainFragment(), getString(R.string.main_user_tab));
+        pagerAdapter.addFragment(new ClientViewScheduleFragment(), getString(R.string.schedule_user_tab));
         viewPager.setAdapter(pagerAdapter);
     }
 }

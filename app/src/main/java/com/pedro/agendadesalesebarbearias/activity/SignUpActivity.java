@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.pedro.agendadesalesebarbearias.fragment.CommerceFragment;
+import com.pedro.agendadesalesebarbearias.fragment.SignUpCommerceFragment;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.fragment.SignUpClientFragment;
 
@@ -20,7 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
     private boolean isClientFragment = true;
 
     private SignUpClientFragment clientFragment;
-    private CommerceFragment commerceFragment;
+    private SignUpCommerceFragment signUpCommerceFragment;
 
     private static final String CLIENT_TAG = "CLIENT_FRAGMENT";
     private static final String COMMERCE_TAG = "COMMERCE_FRAGMENT";
@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         clientFragment = new SignUpClientFragment();
-        commerceFragment  = new CommerceFragment();
+        signUpCommerceFragment = new SignUpCommerceFragment();
 
         fragmentManager = getSupportFragmentManager();
 
@@ -73,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
     public void changeCommerceFragment(){
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
-        fragmentTransaction.replace(R.id.fragment_container, commerceFragment, COMMERCE_TAG).commit();
+        fragmentTransaction.replace(R.id.fragment_container, signUpCommerceFragment, COMMERCE_TAG).commit();
     }
 
 }

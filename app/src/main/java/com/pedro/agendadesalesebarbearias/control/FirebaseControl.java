@@ -2,11 +2,15 @@ package com.pedro.agendadesalesebarbearias.control;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.activity.ClientUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
@@ -30,9 +36,12 @@ public class FirebaseControl {
     private static FirebaseAuth auth;
     private static DatabaseReference databaseReferenceClient;
     private static DatabaseReference databaseReferenceCommerce;
+    private static StorageReference storageReference;
 
     public static final String CLIENTS_DB = "clients";
     public static final String COMMERCE_DB = "commerces";
+    public static final String AVATAR_IMG_NAME = "avatar";
+    public static final String BG_IMG_NAME = "bg";
 
     private static ValueEventListener valueEventListenerClient;
 
@@ -238,6 +247,44 @@ public class FirebaseControl {
                         }
                     }
                 });
+
+    }
+
+    public static void uploadImgInStorage(final Context context, String accountType, String imgTypeName, Uri uri){
+        StorageReference imgStorageRef = ConfigurationFirebase.getStorageReference();
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+        imgStorageRef.child(accountType).child(userId).child(imgTypeName + "." + AppControl.getExtension(context, uri));
+
+        imgStorageRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(context, context.getString(R.string.toast_image_uploaded_sucessfully), Toast.LENGTH_SHORT).show();
+                }else{
+                    String message = task.getException().toString();
+                    Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public static void loadImgFromStorageIntoImageView(final Context context, String accountType, String imgTypeName, final AppCompatImageView imgView){
+        storageReference = ConfigurationFirebase.getStorageReference();
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+        storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(context)
+                                .load(uri)
+                                .into(imgView);
+                    }
+                });
+
 
     }
 

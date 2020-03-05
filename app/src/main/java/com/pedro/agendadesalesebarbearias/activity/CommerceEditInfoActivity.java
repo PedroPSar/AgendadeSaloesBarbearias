@@ -1,8 +1,10 @@
-package com.pedro.agendadesalesebarbearias;
+package com.pedro.agendadesalesebarbearias.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.pedro.agendadesalesebarbearias.R;
 
 public class CommerceEditInfoActivity extends AppCompatActivity {
 

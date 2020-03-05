@@ -29,7 +29,7 @@ import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CommerceFragment extends Fragment {
+public class SignUpCommerceFragment extends Fragment {
 
     private AppCompatEditText edTxtCommerceName;
     private AppCompatEditText edTxtEmail;
@@ -47,7 +47,7 @@ public class CommerceFragment extends Fragment {
     private LinearLayoutCompat llSignIn;
     private Button btnSignUpCommerce;
 
-    public CommerceFragment() {
+    public SignUpCommerceFragment() {
         // Required empty public constructor
     }
 

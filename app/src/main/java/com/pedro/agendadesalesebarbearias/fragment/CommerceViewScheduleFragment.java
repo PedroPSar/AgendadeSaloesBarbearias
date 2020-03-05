@@ -1,9 +1,9 @@
 package com.pedro.agendadesalesebarbearias.fragment;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,30 +11,23 @@ import android.view.ViewGroup;
 
 import com.pedro.agendadesalesebarbearias.R;
 
-public class ClientUserMainFragment extends Fragment {
 
-    RecyclerView recyclerView;
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class CommerceViewScheduleFragment extends Fragment {
 
 
-    public ClientUserMainFragment() {
+    public CommerceViewScheduleFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_client_user_main, container, false);
-
-        recyclerView = view.findViewById(R.id.rv_main);
-
-
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_commerce_view_schedule, container, false);
 
         return view;
     }

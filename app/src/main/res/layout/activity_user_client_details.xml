@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.UserClientDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,290 +13,288 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ToolbarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:theme="@style/ToolbarTheme"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_container"
-            android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
             >
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/bgLogoImg"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/commerceLogoImg"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/bgLogoImg"
-                app:layout_constraintStart_toStartOf="@+id/bgLogoImg" />
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/btnEditBackground"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/button_background"
-                android:src="@drawable/ic_edit_24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/bgLogoImg"
-                app:layout_constraintEnd_toEndOf="@+id/bgLogoImg"
-                app:theme="@style/ButtonTheme" />
-
-            <TextView
-                android:id="@+id/txtLabelRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:text="Avaliação:"
-                app:layout_constraintEnd_toStartOf="@+id/txtRating"
-                app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
-
-            <TextView
-                android:id="@+id/txtRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="4.6"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtOfSideLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="Minha barbearia"
-                android:textSize="@dimen/commerce_name_bg_size"
-                app:layout_constraintBottom_toBottomOf="@+id/bgLogoImg"
-                app:layout_constraintStart_toEndOf="@+id/commerceLogoImg" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/typeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Barbearia"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtCommerceName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Salão do Pedro"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
-
-            <ImageView
-                android:id="@+id/iconEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_email_hint_24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCommerceName" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtCommerceEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="salaopedro@outlook.com"
-                app:layout_constraintStart_toEndOf="@+id/iconEmail"
-                app:layout_constraintTop_toBottomOf="@+id/txtCommerceName" />
-
-            <ImageView
-                android:id="@+id/iconTel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/ic_phone_24dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmail" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtCommerceTel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="(35) 99587-4123"
-                app:layout_constraintStart_toEndOf="@+id/iconTel"
-                app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmail" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtLabelAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Endereço"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCommerceTel" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_address"
-                android:layout_width="0dp"
+                android:id="@+id/cl_container"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtLabelAddress">
+                >
 
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelStreet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Rua:"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtStreet"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/bgLogoImg"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="Américo Marinello"
-                    app:layout_constraintEnd_toStartOf="@+id/txtLabelNum"
-                    app:layout_constraintStart_toEndOf="@+id/txtLabelStreet"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="200dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelNum"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/commerceLogoImg"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/bgLogoImg"
+                    app:layout_constraintStart_toStartOf="@+id/bgLogoImg" />
+
+                <TextView
+                    android:id="@+id/txtLabelRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Nº"
-                    app:layout_constraintEnd_toStartOf="@+id/txtNumber"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="Avaliação:"
+                    app:layout_constraintEnd_toStartOf="@+id/txtRating"
+                    app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtNumber"
+                <TextView
+                    android:id="@+id/txtRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="836"
+                    android:text="4.6"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelDistrict"
+                    android:id="@+id/txtOfSideLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Bairro:"
+                    android:layout_marginBottom="8dp"
+                    android:text="Minha barbearia"
+                    android:textSize="@dimen/commerce_name_bg_size"
+                    app:layout_constraintBottom_toBottomOf="@+id/bgLogoImg"
+                    app:layout_constraintStart_toEndOf="@+id/commerceLogoImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/typeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Barbearia"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+                    app:layout_constraintTop_toBottomOf="@+id/bgLogoImg" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtDistrict"
+                    android:id="@+id/txtCommerceName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Capelinha"
-                    app:layout_constraintStart_toEndOf="@+id/txtLabelDistrict"
-                    app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelCity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Cidade:"
+                    android:text="Salão do Pedro"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+                    app:layout_constraintTop_toBottomOf="@+id/typeLabel" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtCity"
+                <ImageView
+                    android:id="@+id/iconEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Ouro Fino - MG"
-                    app:layout_constraintStart_toEndOf="@+id/txtLabelCity"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_email_hint_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceName" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCommerceEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="salaopedro@outlook.com"
+                    app:layout_constraintStart_toEndOf="@+id/iconEmail"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceName" />
+
+                <ImageView
+                    android:id="@+id/iconTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_phone_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmail" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtCommerceTel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="(35) 99587-4123"
+                    app:layout_constraintStart_toEndOf="@+id/iconTel"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmail" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtLabelAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Endereço"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceTel" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLabelAddress">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelStreet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Rua:"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtStreet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Américo Marinello"
+                        app:layout_constraintEnd_toStartOf="@+id/txtLabelNum"
+                        app:layout_constraintStart_toEndOf="@+id/txtLabelStreet"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="Nº"
+                        app:layout_constraintEnd_toStartOf="@+id/txtNumber"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="836"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelDistrict"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Bairro:"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtDistrict"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Capelinha"
+                        app:layout_constraintStart_toEndOf="@+id/txtLabelDistrict"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Cidade:"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Ouro Fino - MG"
+                        app:layout_constraintStart_toEndOf="@+id/txtLabelCity"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clRvServicesAndProfessionals"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_address" >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelServices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Serviços"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvServices"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtLabelServices" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtLabelProfessionals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Profissionais"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rvServices" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/professionals_rv"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtLabelProfessionals" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_professionals"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cl_address" >
+        </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelProfessionals"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Profissionais"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+    </ScrollView>
 
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/professionals_rv"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLabelProfessionals" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtLabelServices"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Serviços"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/professionals_rv" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/services_rv"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtLabelServices" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
