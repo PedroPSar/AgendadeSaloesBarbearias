@@ -34,6 +34,7 @@ public class SignUpCommerceFragment extends Fragment {
     private AppCompatEditText edTxtCommerceName;
     private AppCompatEditText edTxtEmail;
     private AppCompatEditText edTxtPassword;
+    private AppCompatEditText edTxtTel;
     private AppCompatEditText edTxtStreet;
     private AppCompatEditText edTxtNum;
     private AppCompatEditText edTxtDistrict;
@@ -68,6 +69,7 @@ public class SignUpCommerceFragment extends Fragment {
         edTxtCommerceName = view.findViewById(R.id.editTxtCommerceName);
         edTxtEmail = view.findViewById(R.id.editTxtEmail);
         edTxtPassword = view.findViewById(R.id.editTextPassword);
+        edTxtTel = view.findViewById(R.id.editTextTel);
         edTxtStreet = view.findViewById(R.id.editTextStreet);
         edTxtNum = view.findViewById(R.id.editTextNumber);
         edTxtDistrict = view.findViewById(R.id.editTextDistrict);
@@ -114,6 +116,7 @@ public class SignUpCommerceFragment extends Fragment {
                 commerce.setName(edTxtCommerceName.getText().toString());
                 commerce.setEmail(edTxtEmail.getText().toString());
                 commerce.setPassword(edTxtPassword.getText().toString());
+                commerce.setTel(edTxtTel.getText().toString());
                 commerce.setType(type);
 
                 Address address = new Address();

@@ -1,9 +1,12 @@
 package com.pedro.agendadesalesebarbearias.model;
 
+import java.util.ArrayList;
+
 public class Service {
 
     private String name;
     private String price;
+    private ArrayList<Professional> professionals;
 
     public Service() {
 

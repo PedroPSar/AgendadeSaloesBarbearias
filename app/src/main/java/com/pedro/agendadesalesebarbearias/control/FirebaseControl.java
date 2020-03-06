@@ -275,17 +275,52 @@ public class FirebaseControl {
         auth = ConfigurationFirebase.getFirebaseAuth();
         String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
-        storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
-                .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Glide.with(context)
-                                .load(uri)
-                                .into(imgView);
-                    }
-                });
+        try{
+            storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
+                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Glide.with(context)
+                                    .load(uri)
+                                    .into(imgView);
+                        }
+                    });
+        }catch (NullPointerException e){
+            Glide.with(context)
+                    .load(R.drawable.img_default)
+                    .into(imgView);
+        }
 
 
+
+    }
+
+    public static SalaoBarbearia getCommerceInfo(final Context context){
+
+        final SalaoBarbearia[] commerce = {new SalaoBarbearia()};
+
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+        databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference().child(COMMERCE_DB).child(userId);
+        ValueEventListener valueEventListenerCommerce = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot != null){
+                    SalaoBarbearia commerceInfo = dataSnapshot.getValue(SalaoBarbearia.class);
+                    commerce[0] = commerceInfo;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(context, context.getString(R.string.toast_error_loading_info), Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        databaseReferenceCommerce.addListenerForSingleValueEvent(valueEventListenerCommerce);
+
+        return commerce[0];
     }
 
     private static void openClientUserMainActivity(Context context){

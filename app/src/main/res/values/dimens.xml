@@ -26,4 +26,5 @@
     <dimen name="lbl_rv_size">18sp</dimen>
     <dimen name="lbl_edit_info_size">20sp</dimen>
     <dimen name="txt_edit_info_size">16sp</dimen>
+    <dimen name="txt_rv_services">16sp</dimen>
 </resources>

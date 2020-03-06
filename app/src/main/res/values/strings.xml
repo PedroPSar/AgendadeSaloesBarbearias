@@ -27,6 +27,7 @@
     <string name="hint_district">Bairro</string>
     <string name="hint_city">Cidade</string>
     <string name="hint_state">Estado</string>
+    <string name="tel_edit_hint">Telefone</string>
 
     <!-- FirebaseControl -->
     <string name="sign_up_is_successful">Cadastro realizado com sucesso</string>
@@ -38,6 +39,7 @@
     <string name="error_passwaord_not_correct">Senha incorreta</string>
     <string name="toast_image_uploaded_sucessfully">Imagem carregada com sucesso</string>
     <string name="toast_error_image_uploaded">Error ao carregar imagem</string>
+    <string name="toast_error_loading_info">Erro ao carregar as informações</string>
 
     <!-- Client User Activity -->
     <string name="main_user_tab">Principal</string>
@@ -81,4 +83,7 @@
 
     <!-- Client Scheduling Activity -->
     <string name="title_toolbar_client_scheduling_activity">Agendar Horário</string>
+
+    <!-- Rv Services Adapter Layout -->
+    <string name="txt_schedule_button">Agendar</string>
 </resources>
