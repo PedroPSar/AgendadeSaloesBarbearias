@@ -56,6 +56,7 @@
     <!-- Commerce View Main Fragment  -->
     <string name="lbl_services">Serviços</string>
     <string name="lbl_employees">Funcionários</string>
+    <string name="dialog_add_services_title">Adicionar serviço</string>
 
     <!-- Commerce View Clients Fragment -->
     <string name="lbl_clients">Clientes</string>
@@ -86,4 +87,11 @@
 
     <!-- Rv Services Adapter Layout -->
     <string name="txt_schedule_button">Agendar</string>
+
+    <!-- Dialog AddService -->
+    <string name="et_hint_name_dialog_add_service">Nome do serviço</string>
+    <string name="et_hint_price_dialog_add_service">Preço do serviço</string>
+    <string name="lbl_service_time">Tempo gasto</string>
+    <string name="btn_cancel_txt">Cancelar</string>
+    <string name="btn_add_txt">Adicionar</string>
 </resources>

@@ -17,6 +17,8 @@
 
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:paddingStart">@dimen/button_padding_start</item>
+        <item name="android:paddingEnd">@dimen/button_padding_start</item>
     </style>
 
     <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -29,4 +31,5 @@
 
     <dimen name="toolbar_text_size">16sp</dimen>
     <dimen name="toolbar_elevation">6dp</dimen>
+    <dimen name="button_padding_start">16dp</dimen>
 </resources>

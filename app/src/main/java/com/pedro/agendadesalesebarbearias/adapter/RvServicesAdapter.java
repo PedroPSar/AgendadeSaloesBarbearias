@@ -64,9 +64,9 @@ public class RvServicesAdapter extends RecyclerView.Adapter<RvServicesAdapter.Rv
         public RvServicesAdapterViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemView.findViewById(R.id.txtServiceName);
-            itemView.findViewById(R.id.txtServicePrice);
-            itemView.findViewById(R.id.btnSchedule);
+            txtServiceName = itemView.findViewById(R.id.txtServiceName);
+            txtServicePrice = itemView.findViewById(R.id.txtServicePrice);
+            btnSchedule = itemView.findViewById(R.id.btnSchedule);
         }
     }
 }
