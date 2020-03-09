@@ -40,6 +40,10 @@
     <string name="toast_image_uploaded_sucessfully">Imagem carregada com sucesso</string>
     <string name="toast_error_image_uploaded">Error ao carregar imagem</string>
     <string name="toast_error_loading_info">Erro ao carregar as informações</string>
+    <string name="toast_successfully_add_service">Serviço adicionado com sucesso</string>
+    <string name="toast_error_add_service">Ocorreu um erro ao adicionar o serviço, serviço não adicionado</string>
+    <string name="toast_successfully_add_employee">Funcionário adicionado com sucesso</string>
+    <string name="toast_error_add_employee">Ocorreu um erro ao adicionar o funcionário, funcionário não adicionado</string>
 
     <!-- Client User Activity -->
     <string name="main_user_tab">Principal</string>
@@ -56,7 +60,7 @@
     <!-- Commerce View Main Fragment  -->
     <string name="lbl_services">Serviços</string>
     <string name="lbl_employees">Funcionários</string>
-    <string name="dialog_add_services_title">Adicionar serviço</string>
+    <string name="toast_time_spinner_nothing_selected_txt">Selecione o tempo do serviço</string>
 
     <!-- Commerce View Clients Fragment -->
     <string name="lbl_clients">Clientes</string>
@@ -89,9 +93,24 @@
     <string name="txt_schedule_button">Agendar</string>
 
     <!-- Dialog AddService -->
+    <string name="dialog_add_services_title">Adicionar serviço</string>
     <string name="et_hint_name_dialog_add_service">Nome do serviço</string>
     <string name="et_hint_price_dialog_add_service">Preço do serviço</string>
     <string name="lbl_service_time">Tempo gasto</string>
     <string name="btn_cancel_txt">Cancelar</string>
     <string name="btn_add_txt">Adicionar</string>
+
+    <!-- Dialog AddEmployees -->
+    <string name="dialog_add_employees_title">Acicionar funcionário</string>
+    <string name="et_hint_name_dialog_add_employee">Nome do funcionário</string>
+    <string name="et_hint_work_dialog_add_employee">Profissão do funcionário</string>
+
+    <!-- Service Model -->
+    <string name="thirty_minutes">30 minutos</string>
+    <string name="sixty_minutes">1 hora</string>
+    <string name="ninety_minutes">1 hora e 30 minutos</string>
+    <string name="one_hundred_and_twenty_minutes">2 horas</string>
+    <string name="one_hundred_and_fifty_minutes">2 horas e 30 minutos</string>
+    <string name="one_hundred_and_eighty_minutes">3 horas</string>
+
 </resources>

@@ -11,6 +11,11 @@ public class Service {
     private int serviceTime;
     private ArrayList<Professional> professionals;
 
+    public static final String[] TIMES = {
+            "30 minutos", "1 hora", "1 hora e 30 minutos",
+            "2 horas", "2 horas e 30 minutos", "3 horas"
+    };
+
     public Service() {
 
     }

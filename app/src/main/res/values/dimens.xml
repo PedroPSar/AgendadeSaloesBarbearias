@@ -27,4 +27,8 @@
     <dimen name="lbl_edit_info_size">20sp</dimen>
     <dimen name="txt_edit_info_size">16sp</dimen>
     <dimen name="txt_rv_services">16sp</dimen>
+
+    <dimen name="toolbar_text_size">16sp</dimen>
+    <dimen name="toolbar_elevation">6dp</dimen>
+    <dimen name="button_padding_start">16dp</dimen>
 </resources>

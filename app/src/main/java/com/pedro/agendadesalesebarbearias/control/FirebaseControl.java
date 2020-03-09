@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,7 +30,9 @@ import com.pedro.agendadesalesebarbearias.activity.ClientUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
 import com.pedro.agendadesalesebarbearias.model.Client;
+import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
+import com.pedro.agendadesalesebarbearias.model.Service;
 
 public class FirebaseControl {
 
@@ -40,6 +43,8 @@ public class FirebaseControl {
 
     public static final String CLIENTS_DB = "clients";
     public static final String COMMERCE_DB = "commerces";
+    public static final String SERVICES_DB = "services";
+    public static final String EMPLOYEES_DB = "employees";
     public static final String AVATAR_IMG_NAME = "avatar";
     public static final String BG_IMG_NAME = "bg";
 
@@ -321,6 +326,50 @@ public class FirebaseControl {
         databaseReferenceCommerce.addListenerForSingleValueEvent(valueEventListenerCommerce);
 
         return commerce[0];
+    }
+
+    public static void setServiceInCurrentCommerce(final Context context, Service service){
+        String currentUserId = EncoderBase64.encoderBase64( auth.getCurrentUser().getEmail() );
+        databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
+
+        databaseReferenceCommerce.child(COMMERCE_DB)
+                .child(currentUserId).child(SERVICES_DB).setValue(service)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, context.getString(R.string.toast_successfully_add_service),
+                        Toast.LENGTH_SHORT).show();
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, context.getString(R.string.toast_error_add_service),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public static void setEmployeeInCurrentCommerce(final Context context, Professional employee){
+        String currentUserId = EncoderBase64.encoderBase64( auth.getCurrentUser().getEmail() );
+        databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
+        databaseReferenceCommerce.child(COMMERCE_DB)
+                .child(currentUserId).child(EMPLOYEES_DB).setValue(employee)
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, context.getString(R.string.toast_successfully_add_employee),
+                        Toast.LENGTH_SHORT).show();
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, context.getString(R.string.toast_error_add_employee),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private static void openClientUserMainActivity(Context context){
