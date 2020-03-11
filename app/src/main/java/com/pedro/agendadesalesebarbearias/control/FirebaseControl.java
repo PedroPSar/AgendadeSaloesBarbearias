@@ -3,10 +3,14 @@ package com.pedro.agendadesalesebarbearias.control;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +33,8 @@ import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.activity.ClientUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
+import com.pedro.agendadesalesebarbearias.adapter.RvEmployeesAdapter;
+import com.pedro.agendadesalesebarbearias.adapter.RvServicesAdapter;
 import com.pedro.agendadesalesebarbearias.model.Client;
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
@@ -145,6 +151,7 @@ public class FirebaseControl {
 
                             fCommerce.saveCommerce();
 
+                            openCommerceUserMainActivity(fContext);
                         }else{
 
                             String exceptionError = "";
@@ -258,62 +265,85 @@ public class FirebaseControl {
     public static void uploadImgInStorage(final Context context, String accountType, String imgTypeName, Uri uri){
         StorageReference imgStorageRef = ConfigurationFirebase.getStorageReference();
         auth = ConfigurationFirebase.getFirebaseAuth();
-        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
-        imgStorageRef.child(accountType).child(userId).child(imgTypeName + "." + AppControl.getExtension(context, uri));
+        if(auth != null){
 
-        imgStorageRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(context, context.getString(R.string.toast_image_uploaded_sucessfully), Toast.LENGTH_SHORT).show();
-                }else{
-                    String message = task.getException().toString();
-                    Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded), Toast.LENGTH_SHORT).show();
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+            imgStorageRef.child(accountType).child(userId).child(imgTypeName);
+
+            imgStorageRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(context, context.getString(R.string.toast_image_uploaded_sucessfully), Toast.LENGTH_SHORT).show();
+                    }else{
+                        String message = task.getException().toString();
+                        Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded), Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+
+        }
+
     }
 
     public static void loadImgFromStorageIntoImageView(final Context context, String accountType, String imgTypeName, final AppCompatImageView imgView){
         storageReference = ConfigurationFirebase.getStorageReference();
         auth = ConfigurationFirebase.getFirebaseAuth();
-        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+        if(auth != null){
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
-        try{
-            storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
-                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Glide.with(context)
-                                    .load(uri)
-                                    .into(imgView);
-                        }
-                    });
-        }catch (NullPointerException e){
-            Glide.with(context)
-                    .load(R.drawable.img_default)
-                    .into(imgView);
+            try{
+                storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
+                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Glide.with(context)
+                                        .load(uri)
+                                        .into(imgView);
+                            }
+                        });
+            }catch (NullPointerException e){
+                Glide.with(context)
+                        .load(R.drawable.img_default)
+                        .into(imgView);
+            }
+
         }
-
-
 
     }
 
-    public static SalaoBarbearia getCommerceInfo(final Context context){
-
-        final SalaoBarbearia[] commerce = {new SalaoBarbearia()};
+    public static void setCommerceInfo(final Context context,
+                                       final AppCompatTextView txtRating, final AppCompatTextView txtCommerceName,
+                                       final RecyclerView rvServices, final RecyclerView rvEmployees){
 
         auth = ConfigurationFirebase.getFirebaseAuth();
         String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
         databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference().child(COMMERCE_DB).child(userId);
-        ValueEventListener valueEventListenerCommerce = new ValueEventListener() {
+        databaseReferenceCommerce.addListenerForSingleValueEvent( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot != null){
-                    SalaoBarbearia commerceInfo = dataSnapshot.getValue(SalaoBarbearia.class);
-                    commerce[0] = commerceInfo;
+                if(dataSnapshot.exists()){
+                    SalaoBarbearia commerce = dataSnapshot.getValue(SalaoBarbearia.class);
+
+                    // Set info
+                    // Load rating and commerce name
+                    txtRating.setText(String.valueOf(commerce.getRating()));
+                    txtCommerceName.setText(commerce.getName());
+
+                    // Load services rv
+                    RvServicesAdapter servicesAdapter = new RvServicesAdapter(commerce.getServices(), context);
+                    RecyclerView.LayoutManager servicesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                    rvServices.setLayoutManager(servicesLM);
+                    rvServices.setAdapter(servicesAdapter);
+
+                    // Load employess
+                    RvEmployeesAdapter employeesAdapter = new RvEmployeesAdapter(commerce.getProfessional(), context);
+                    RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                    rvEmployees.setLayoutManager(employeesLM);
+                    rvEmployees.setAdapter(employeesAdapter);
                 }
             }
 
@@ -321,11 +351,8 @@ public class FirebaseControl {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(context, context.getString(R.string.toast_error_loading_info), Toast.LENGTH_SHORT).show();
             }
-        };
 
-        databaseReferenceCommerce.addListenerForSingleValueEvent(valueEventListenerCommerce);
-
-        return commerce[0];
+        });
     }
 
     public static void setServiceInCurrentCommerce(final Context context, Service service){
@@ -386,5 +413,6 @@ public class FirebaseControl {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
+
 
 }

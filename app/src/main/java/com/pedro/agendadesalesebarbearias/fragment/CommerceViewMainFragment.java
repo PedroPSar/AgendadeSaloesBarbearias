@@ -1,6 +1,7 @@
 package com.pedro.agendadesalesebarbearias.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatEditText;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.pedro.agendadesalesebarbearias.R;
+import com.pedro.agendadesalesebarbearias.activity.CommerceEditInfoActivity;
 import com.pedro.agendadesalesebarbearias.adapter.RvEmployeesAdapter;
 import com.pedro.agendadesalesebarbearias.adapter.RvServicesAdapter;
 import com.pedro.agendadesalesebarbearias.control.AppControl;
@@ -44,10 +47,9 @@ public class CommerceViewMainFragment extends Fragment {
     private AppCompatTextView txtCommerceName;
     private AppCompatImageButton btnEdit;
     private AppCompatImageButton btnAddServices;
-    private AppCompatImageButton btnAddEmployess;
+    private AppCompatImageButton btnAddEmployees;
     private RecyclerView rvServices;
     private RecyclerView rvEmployees;
-    private SalaoBarbearia commerceInfo;
     private int serviceTime = 0;
 
     public CommerceViewMainFragment() {
@@ -62,15 +64,7 @@ public class CommerceViewMainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_commerce_view_main, container, false);
 
         // Get reference
-        bgImg = view.findViewById(R.id.bgImg);
-        avatarImg = view.findViewById(R.id.avatar_img);
-        txtRating = view.findViewById(R.id.txtRating);
-        txtCommerceName = view.findViewById(R.id.txtCommerceName);
-        btnEdit = view.findViewById(R.id.btnEdit);
-        btnAddServices = view.findViewById(R.id.btnAddServices);
-        btnAddEmployess = view.findViewById(R.id.btnAddEmployess);
-        rvServices = view.findViewById(R.id.rvServices);
-        rvEmployees = view.findViewById(R.id.rvEmployees);
+        getObjectsIds(view);
 
         // Load info
         // Load bg img
@@ -81,25 +75,33 @@ public class CommerceViewMainFragment extends Fragment {
         FirebaseControl.loadImgFromStorageIntoImageView(getActivity(), FirebaseControl.COMMERCE_DB,
                 FirebaseControl.AVATAR_IMG_NAME, avatarImg);
 
-        commerceInfo = FirebaseControl.getCommerceInfo(getActivity());
-
-        // Load rating and commerce name
-        txtRating.setText(String.valueOf(commerceInfo.getRating()));
-        txtCommerceName.setText(commerceInfo.getName());
-
-        // Load services rv
-        RvServicesAdapter servicesAdapter = new RvServicesAdapter(commerceInfo.getServices(), getActivity());
-        RecyclerView.LayoutManager servicesLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        rvServices.setLayoutManager(servicesLM);
-        rvServices.setAdapter(servicesAdapter);
-
-        // Load employess
-        RvEmployeesAdapter employeesAdapter = new RvEmployeesAdapter(commerceInfo.getProfessional(), getActivity());
-        RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        rvEmployees.setLayoutManager(employeesLM);
-        rvEmployees.setAdapter(employeesAdapter);
+        // Load text and recycler views
+        FirebaseControl.setCommerceInfo(getActivity(), txtRating, txtCommerceName, rvServices, rvEmployees);
 
         // Button addServices open Dialog
+        btnAddServicesClick();
+
+        // Button addEmployess open dialog
+        btnAddEmployeesClick();
+
+        btnEditClick();
+
+        return view;
+    }
+
+    private void getObjectsIds(View view){
+        bgImg = view.findViewById(R.id.bgImg);
+        avatarImg = view.findViewById(R.id.avatar_img);
+        txtRating = view.findViewById(R.id.txtRating);
+        txtCommerceName = view.findViewById(R.id.txtCommerceName);
+        btnEdit = view.findViewById(R.id.btnEdit);
+        btnAddServices = view.findViewById(R.id.btnAddServices);
+        btnAddEmployees = view.findViewById(R.id.btnAddEmployess);
+        rvServices = view.findViewById(R.id.rvServices);
+        rvEmployees = view.findViewById(R.id.rvEmployees);
+    }
+
+    private void btnAddServicesClick(){
         btnAddServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,8 +112,10 @@ public class CommerceViewMainFragment extends Fragment {
 
             }
         });
+    }
 
-        btnAddEmployess.setOnClickListener(new View.OnClickListener() {
+    private void btnAddEmployeesClick(){
+        btnAddEmployees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
@@ -147,8 +151,17 @@ public class CommerceViewMainFragment extends Fragment {
                 builder.show();
             }
         });
+    }
 
-        return view;
+    private void btnEditClick(){
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CommerceEditInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

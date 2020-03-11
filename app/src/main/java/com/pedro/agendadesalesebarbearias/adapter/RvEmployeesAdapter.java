@@ -43,7 +43,12 @@ public class RvEmployeesAdapter extends RecyclerView.Adapter<RvEmployeesAdapter.
 
     @Override
     public int getItemCount() {
-        return employeesList.size();
+        if(employeesList != null){
+            return employeesList.size();
+        }else{
+            return 0;
+        }
+
     }
 
     public class RvEmployeesAdapterViewHolder extends RecyclerView.ViewHolder {

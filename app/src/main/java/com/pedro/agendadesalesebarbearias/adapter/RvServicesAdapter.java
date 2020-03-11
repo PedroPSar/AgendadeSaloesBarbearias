@@ -52,7 +52,12 @@ public class RvServicesAdapter extends RecyclerView.Adapter<RvServicesAdapter.Rv
 
     @Override
     public int getItemCount() {
-        return servicesList.size();
+        if(servicesList != null){
+            return servicesList.size();
+        }else{
+            return 0;
+        }
+
     }
 
     public class RvServicesAdapterViewHolder extends RecyclerView.ViewHolder {

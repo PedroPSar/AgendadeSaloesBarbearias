@@ -130,15 +130,9 @@ public class SignUpCommerceFragment extends Fragment {
 
                 FirebaseControl.signUpCommerce(getActivity(), commerce);
 
-                openCommerceUserMainActivity();
             }
         });
 
-    }
-
-    private void openCommerceUserMainActivity(){
-        Intent intent = new Intent(getActivity(), CommerceUserMainActivity.class);
-        startActivity(intent);
     }
 
 }

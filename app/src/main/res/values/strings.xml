@@ -49,6 +49,11 @@
     <string name="main_user_tab">Principal</string>
     <string name="schedule_user_tab">Agenda</string>
 
+    <!-- Commerce User Activity -->
+    <string name="commerce_main_fragment_tab_title">Principal</string>
+    <string name="commerce_schedule_fragment_tab_title">Agenda</string>
+    <string name="commerce_reports_fragment_tab_title">Relatórios</string>
+    <string name="commerce_clients_fragment_tab_title">Clientes</string>
 
     <!-- rv_main_layout -->
     <string name="lbl_name">Nome:</string>
