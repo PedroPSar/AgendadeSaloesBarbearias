@@ -34,7 +34,7 @@ public class ConfigurationFirebase {
 
     public static StorageReference getStorageReference(){
 
-        if(storageReference != null){
+        if(storageReference == null){
             storageReference = FirebaseStorage.getInstance().getReference();
         }
 

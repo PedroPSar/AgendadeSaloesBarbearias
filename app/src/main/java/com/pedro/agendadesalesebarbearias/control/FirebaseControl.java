@@ -270,17 +270,22 @@ public class FirebaseControl {
 
             String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
-            imgStorageRef.child(accountType).child(userId).child(imgTypeName);
+            imgStorageRef.child("bg.jpg");
 
-            imgStorageRef.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            UploadTask uploadTask = imgStorageRef.putFile(uri);
+
+            uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(context, context.getString(R.string.toast_image_uploaded_sucessfully), Toast.LENGTH_SHORT).show();
-                    }else{
-                        String message = task.getException().toString();
-                        Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded), Toast.LENGTH_SHORT).show();
-                    }
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("teste", e.toString());
+                    Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Toast.makeText(context, context.getString(R.string.toast_image_uploaded_sucessfully),
+                            Toast.LENGTH_SHORT).show();
                 }
             });
 
