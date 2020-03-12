@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:minHeight="?android:actionBarSize"
         android:theme="@style/ToolbarTheme"
+        android:elevation="@dimen/toolbar_elevation"
         app:title="@string/txtTitleEditInfo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

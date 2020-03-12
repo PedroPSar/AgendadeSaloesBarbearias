@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.control.AppControl;
@@ -60,10 +61,18 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         btnEditBackground.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent getImageIntent = new Intent();
-                getImageIntent.setType("image/*");
-                getImageIntent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(getImageIntent, IMG_REQUEST_CODE);
+                if(FirebaseControl.uploadTask != null && FirebaseControl.uploadTask.isInProgress()){
+
+                    Toast.makeText(CommerceEditInfoActivity.this, getString(R.string.toast_text_img_upload_in_progress),
+                            Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Intent getImageIntent = new Intent();
+                    getImageIntent.setType("image/*");
+                    getImageIntent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(getImageIntent, IMG_REQUEST_CODE);
+                }
+
             }
         });
     }
@@ -75,7 +84,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         if(requestCode == IMG_REQUEST_CODE && resultCode == RESULT_OK && data != null && data.getData() != null){
 
             imgBgUri = data.getData();
-            String imgName = FirebaseControl.AVATAR_IMG_NAME + AppControl.getExtension(this, imgBgUri);
+            String imgName = FirebaseControl.BG_IMG_NAME + "." + AppControl.getExtension(this, imgBgUri);
 
             FirebaseControl.uploadImgInStorage(this, FirebaseControl.COMMERCE_DB, imgName, imgBgUri);
 

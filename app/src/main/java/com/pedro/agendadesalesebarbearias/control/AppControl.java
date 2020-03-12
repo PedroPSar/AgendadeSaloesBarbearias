@@ -1,14 +1,21 @@
 package com.pedro.agendadesalesebarbearias.control;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.webkit.MimeTypeMap;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppControl {
 
@@ -55,6 +62,30 @@ public class AppControl {
         }
 
         return result;
+    }
+
+    public static boolean permissionsValidator(int requestCode, Activity activity, String[] permissions){
+
+        if(Build.VERSION.SDK_INT >= 23){
+
+            List<String> permissionsList = new ArrayList<>();
+
+            for( String permission: permissions){
+                boolean permissionValid = ContextCompat.checkSelfPermission(activity, permission)
+                        == PackageManager.PERMISSION_GRANTED;
+                if(!permissionValid) permissionsList.add(permission);
+            }
+
+            //Caso a lista esteja vazia não há necessidade de solicitar a permissão
+            if(permissionsList.isEmpty()) return  true;
+
+            String[] arrayPermissions = new String[permissionsList.size()];
+            permissionsList.toArray(arrayPermissions);
+
+            //Solicita permissão
+            ActivityCompat.requestPermissions(activity, arrayPermissions, requestCode);
+        }
+        return true;
     }
 
 }

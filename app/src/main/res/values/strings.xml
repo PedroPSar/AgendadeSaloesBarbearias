@@ -37,7 +37,8 @@
     <string name="error_when_registering">Erro ao efetuar o cadastro</string>
     <string name="error_email_not_correct">E-mail errado</string>
     <string name="error_passwaord_not_correct">Senha incorreta</string>
-    <string name="toast_image_uploaded_sucessfully">Imagem carregada com sucesso</string>
+    <string name="toast_image_uploaded_sucessfully">Imagem armazenada com sucesso</string>
+    <string name="toast_text_uploading_img">Armazenando imagem</string>
     <string name="toast_error_image_uploaded">Error ao carregar imagem</string>
     <string name="toast_error_loading_info">Erro ao carregar as informações</string>
     <string name="toast_successfully_add_service">Serviço adicionado com sucesso</string>
@@ -90,6 +91,7 @@
     <string name="lbl_commerce_district_edit_info">Bairro:</string>
     <string name="lbl_commerce_city_edit_info">Cidade:</string>
     <string name="lbl_commerce_state_edit_info">Estado:</string>
+    <string name="toast_text_img_upload_in_progress">Upload em progresso</string>
 
     <!-- Client Scheduling Activity -->
     <string name="title_toolbar_client_scheduling_activity">Agendar Horário</string>

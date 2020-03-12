@@ -3,6 +3,7 @@ package com.pedro.agendadesalesebarbearias.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.pedro.agendadesalesebarbearias.R;
+import com.pedro.agendadesalesebarbearias.control.AppControl;
 import com.pedro.agendadesalesebarbearias.control.FirebaseControl;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,11 +20,17 @@ public class MainActivity extends AppCompatActivity {
     private TextView signUpText;
     private AppCompatEditText etEmail;
     private AppCompatEditText etPassword;
+    private static final int PERMISSION_REQUEST_CODE = 5;
+    private String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    Manifest.permission.INTERNET,
+                                    Manifest.permission.ACCESS_NETWORK_STATE};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        AppControl.permissionsValidator(PERMISSION_REQUEST_CODE, this, permissions);
 
         btnLogin = findViewById(R.id.btnLogar);
         signUpText = findViewById(R.id.tv_signUp);

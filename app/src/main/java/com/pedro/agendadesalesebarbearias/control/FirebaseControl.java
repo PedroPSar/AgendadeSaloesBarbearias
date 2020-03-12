@@ -46,6 +46,7 @@ public class FirebaseControl {
     private static DatabaseReference databaseReferenceClient;
     private static DatabaseReference databaseReferenceCommerce;
     private static StorageReference storageReference;
+    public static UploadTask uploadTask;
 
     public static final String CLIENTS_DB = "clients";
     public static final String COMMERCE_DB = "commerces";
@@ -270,14 +271,15 @@ public class FirebaseControl {
 
             String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
-            imgStorageRef.child("bg.jpg");
+            StorageReference ref = imgStorageRef.child(accountType).child(userId).child(imgTypeName);
 
-            UploadTask uploadTask = imgStorageRef.putFile(uri);
+            uploadTask = ref.putFile(uri);
+            Toast.makeText(context, context.getString(R.string.toast_text_uploading_img),
+                    Toast.LENGTH_SHORT).show();
 
             uploadTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d("teste", e.toString());
                     Toast.makeText(context, context.getString(R.string.toast_error_image_uploaded),
                             Toast.LENGTH_SHORT).show();
                 }
@@ -300,7 +302,8 @@ public class FirebaseControl {
             String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
 
             try{
-                storageReference.child(accountType).child(userId).child(imgTypeName).getDownloadUrl()
+                StorageReference ref = storageReference.child(accountType).child(userId).child(imgTypeName);
+                ref.getDownloadUrl()
                         .addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -310,6 +313,7 @@ public class FirebaseControl {
                             }
                         });
             }catch (NullPointerException e){
+                Log.d("teste", e.getCause().toString());
                 Glide.with(context)
                         .load(R.drawable.img_default)
                         .into(imgView);
