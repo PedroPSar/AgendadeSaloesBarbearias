@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatRadioButton;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 
@@ -15,6 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
 
@@ -39,11 +42,12 @@ public class SignUpCommerceFragment extends Fragment {
     private AppCompatEditText edTxtNum;
     private AppCompatEditText edTxtDistrict;
     private AppCompatEditText edTxtCity;
-    private AppCompatEditText edTxtState;
+    private AppCompatSpinner spinnerState;
     private RadioGroup radioGroup;
     private AppCompatRadioButton radioButtonBeautyParlor;
     private AppCompatRadioButton radioButtonBarberShop;
     private String type = "";
+    private String commerceState = "";
 
     private LinearLayoutCompat llSignIn;
     private Button btnSignUpCommerce;
@@ -74,7 +78,7 @@ public class SignUpCommerceFragment extends Fragment {
         edTxtNum = view.findViewById(R.id.editTextNumber);
         edTxtDistrict = view.findViewById(R.id.editTextDistrict);
         edTxtCity = view.findViewById(R.id.editTextCity);
-        edTxtState = view.findViewById(R.id.editTextState);
+        spinnerState = view.findViewById(R.id.spinnerState);
 
         radioGroup = view.findViewById(R.id.radioGroup_type);
         llSignIn = view.findViewById(R.id.ll_signIn);
@@ -84,6 +88,8 @@ public class SignUpCommerceFragment extends Fragment {
         radioButtonBarberShop = view.findViewById(R.id.radioBtn_barbershop);
 
         type = SalaoBarbearia.BEAUTY_PARLOR_TYPE;
+
+        loadSpinner();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -124,11 +130,31 @@ public class SignUpCommerceFragment extends Fragment {
                 address.setHouseNumber(edTxtNum.getText().toString());
                 address.setDistrict(edTxtDistrict.getText().toString());
                 address.setCity(edTxtCity.getText().toString());
-                address.setState(edTxtState.getText().toString());
+                address.setState(commerceState);
 
                 commerce.setAddress(address);
 
                 FirebaseControl.signUpCommerce(getActivity(), commerce);
+
+            }
+        });
+
+    }
+
+    private void loadSpinner(){
+        ArrayAdapter spinnerAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, Address.states);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerState.setAdapter(spinnerAdapter);
+
+        spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                commerceState = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });

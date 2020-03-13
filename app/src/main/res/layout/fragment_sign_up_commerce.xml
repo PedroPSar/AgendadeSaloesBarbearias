@@ -167,13 +167,12 @@
                     app:layout_constraintEnd_toStartOf="@+id/editTextState"
                     app:layout_constraintTop_toBottomOf="@+id/editTextDistrict" />
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/editTextState"
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/spinnerState"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:hint="@string/hint_state"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/editTextDistrict" />
             </androidx.constraintlayout.widget.ConstraintLayout>

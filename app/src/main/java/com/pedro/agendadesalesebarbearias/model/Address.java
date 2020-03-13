@@ -2,6 +2,11 @@ package com.pedro.agendadesalesebarbearias.model;
 
 public class Address {
 
+    public static final String[] states = {"AC", "AL", "AP", "AM", "BA", "CE", "DF",
+                                     "ES", "GO", "MA", "MT", "MS", "MG", "PA",
+                                     "PB", "PR", "PE", "PI", "RJ", "RN", "RS",
+                                     "RO", "SC", "SP", "SE", "TO"};
+
     private String state;
     private String city;
     private String district;

@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pedro.agendadesalesebarbearias.ChooseProfessionalActivity;
+import com.pedro.agendadesalesebarbearias.activity.ChooseProfessionalActivity;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.model.Service;
 

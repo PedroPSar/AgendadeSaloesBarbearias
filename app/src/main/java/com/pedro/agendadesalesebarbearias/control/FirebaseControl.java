@@ -3,12 +3,12 @@ package com.pedro.agendadesalesebarbearias.control;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +36,7 @@ import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
 import com.pedro.agendadesalesebarbearias.adapter.RvEmployeesAdapter;
 import com.pedro.agendadesalesebarbearias.adapter.RvServicesAdapter;
+import com.pedro.agendadesalesebarbearias.model.Address;
 import com.pedro.agendadesalesebarbearias.model.Client;
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
@@ -371,7 +372,8 @@ public class FirebaseControl {
                                                              final AppCompatEditText edTxtStreet,
                                                              final AppCompatEditText edTxtNumber,
                                                              final AppCompatEditText edTxtDistrict,
-                                                             final AppCompatEditText edTxtCity){
+                                                             final AppCompatEditText edTxtCity,
+                                                             final AppCompatSpinner spinnerStates){
 
         auth = ConfigurationFirebase.getFirebaseAuth();
         String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
@@ -390,6 +392,7 @@ public class FirebaseControl {
                 edTxtNumber.setText(commerce.getAddress().getHouseNumber());
                 edTxtDistrict.setText(commerce.getAddress().getDistrict());
                 edTxtCity.setText(commerce.getAddress().getCity());
+                spinnerStates.setSelection(AppControl.getIndexOf(Address.states, commerce.getAddress().getState()));
             }
 
             @Override

@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,6 +46,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
     private AppCompatEditText editTextDistrict;
     private AppCompatEditText editTextCity;
     private AppCompatSpinner spinnerState;
+    private String commerceState = "";
 
 
     @Override
@@ -52,6 +55,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_commerce_edit_info);
 
         getObjectsIds();
+        loadSpinner();
         editTextLoadTexts();
         btnEditBackgroundClick();
         btnEditLogoClick();
@@ -144,7 +148,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
 
     private void editTextLoadTexts(){
         FirebaseControl.setEditTextInfoInCommerceEditActivity(this, editTextCommerceName, editTextCommerceEmail,
-                editTextCommerceTel, editTextStreet, editTextNumber, editTextDistrict, editTextCity);
+                editTextCommerceTel, editTextStreet, editTextNumber, editTextDistrict, editTextCity, spinnerState);
     }
 
     private void saveCommerceInfo(){
@@ -156,6 +160,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         address.setHouseNumber(editTextNumber.getText().toString());
         address.setDistrict(editTextDistrict.getText().toString());
         address.setCity(editTextCity.getText().toString());
+        address.setState(commerceState);
 
         SalaoBarbearia commerceInfo = new SalaoBarbearia();
         commerceInfo.setId(userId);
@@ -169,6 +174,26 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         Intent intent = new Intent(CommerceEditInfoActivity.this, CommerceUserMainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void loadSpinner(){
+
+        ArrayAdapter spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, Address.states);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerState.setAdapter(spinnerAdapter);
+
+        spinnerState.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                commerceState = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override

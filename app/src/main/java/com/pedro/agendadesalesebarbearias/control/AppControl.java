@@ -6,11 +6,16 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
+import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.pedro.agendadesalesebarbearias.model.Address;
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.Service;
 
@@ -86,6 +91,13 @@ public class AppControl {
             ActivityCompat.requestPermissions(activity, arrayPermissions, requestCode);
         }
         return true;
+    }
+
+    public static int getIndexOf(String[] strings, String item) {
+        for (int i = 0; i < strings.length; i++) {
+            if (item.equals(strings[i])) return i;
+        }
+        return -1;
     }
 
 }

@@ -320,7 +320,7 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/spinnerState"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"

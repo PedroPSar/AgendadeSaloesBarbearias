@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddServiceActivity"></activity>
-        <activity android:name=".ChooseProfessionalActivity" />
+        <activity android:name=".activity.AddServiceActivity"></activity>
+        <activity android:name=".activity.ChooseProfessionalActivity" />
         <activity android:name=".activity.ClientSchedulingActivity" />
         <activity android:name=".activity.CommerceEditInfoActivity" />
         <activity android:name=".activity.UserClientDetailsActivity" />
