@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private AppCompatEditText etPassword;
     private static final int PERMISSION_REQUEST_CODE = 5;
     private String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                     Manifest.permission.INTERNET,
                                     Manifest.permission.ACCESS_NETWORK_STATE};
 

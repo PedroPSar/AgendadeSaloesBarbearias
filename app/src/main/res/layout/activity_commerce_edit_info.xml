@@ -18,304 +18,321 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblBgImgEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_background_img_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnEditBackground"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/button_background"
-        android:src="@drawable/ic_edit_24dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintStart_toEndOf="@+id/lblBgImgEdit"
-        app:theme="@style/ButtonTheme" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblAvatarImgEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_logo_img_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblBgImgEdit" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btnEditLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/button_background"
-        android:src="@drawable/ic_edit_24dp"
-        app:layout_constraintTop_toBottomOf="@+id/lblBgImgEdit"
-        app:layout_constraintStart_toEndOf="@+id/lblAvatarImgEdit"
-        app:theme="@style/ButtonTheme" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblCommerceNameEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_commerce_name_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblAvatarImgEdit" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/txtCommerceNameEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/txt_edit_info_size"
-        android:hint="Nome da empresa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCommerceNameEdit" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblCommerceEmailEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_commerce_email_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCommerceNameEdit" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/txtCommerceEmailEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/txt_edit_info_size"
-        android:hint="Email da empresa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCommerceEmailEdit" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblCommerceTelephoneEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_commerce_Telephone_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmailEdit" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/txtCommerceTelephoneEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:textSize="@dimen/txt_edit_info_size"
-        android:hint="Telefone da empresa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCommerceTelephoneEdit" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/lblCommerceTypeEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/lbl_commerce_type_edit_info"
-        android:textSize="@dimen/lbl_edit_info_size"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCommerceTelephoneEdit" />
-
-    <RadioGroup
-        android:id="@+id/radioGroupType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblCommerceTypeEdit"
-        android:orientation="horizontal" >
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radioBtn_beautyParlor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/radio_beautyParlor"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_radio_size"
-            android:checked="true"
-            />
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radioBtn_barbershop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/radio_barbershop"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_radio_size"
-            />
-
-    </RadioGroup>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clAddress"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupType">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblCommerceAddressEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/lbl_commerce_address_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-             />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblStreet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/lbl_commerce_street_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txtStreet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Rua da empresa"
-            app:layout_constraintEnd_toStartOf="@+id/lblNum"
-            app:layout_constraintStart_toEndOf="@+id/lblStreet"
-            app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblBgImgEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_background_img_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/lbl_commerce_num_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp"
-            app:layout_constraintEnd_toStartOf="@+id/txtNumber"
-            app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnEditBackground"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_background"
+                    android:src="@drawable/ic_edit_24dp"
+                    app:layout_constraintStart_toEndOf="@+id/lblBgImgEdit"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:theme="@style/ButtonTheme" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txtNumber"
-            android:layout_width="wrap_content"
-            android:minWidth="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:hint=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblAvatarImgEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_logo_img_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblBgImgEdit" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblDistrict"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/lbl_commerce_district_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/btnEditLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_background"
+                    android:src="@drawable/ic_edit_24dp"
+                    app:layout_constraintStart_toEndOf="@+id/lblAvatarImgEdit"
+                    app:layout_constraintTop_toBottomOf="@+id/lblBgImgEdit"
+                    app:theme="@style/ButtonTheme" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txtDistrict"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:hint="Bairro da empresa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lblDistrict"
-            app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceNameEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_name_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblAvatarImgEdit" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/lbl_commerce_city_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txtCommerceNameEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Nome da empresa"
+                    android:textSize="@dimen/txt_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceNameEdit" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/txtCity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="Cidade da Empresa"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/lblCity"
-            app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceEmailEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_email_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceNameEdit" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/lblState"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/lbl_commerce_state_edit_info"
-            android:textSize="@dimen/lbl_edit_info_size"
-            android:paddingTop="9dp"
-            android:paddingBottom="9dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCity" />
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txtCommerceEmailEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Email da empresa"
+                    android:textSize="@dimen/txt_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceEmailEdit" />
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerState"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/lblState"
-            app:layout_constraintTop_toBottomOf="@+id/txtCity" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceTelephoneEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_Telephone_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceEmailEdit" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/txtCommerceTelephoneEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:hint="Telefone da empresa"
+                    android:textSize="@dimen/txt_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceTelephoneEdit" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceTypeEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_type_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceTelephoneEdit" />
 
+                <RadioGroup
+                    android:id="@+id/radioGroupType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceTypeEdit">
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioBtn_beautyParlor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:checked="true"
+                        android:text="@string/radio_beautyParlor"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_radio_size" />
+
+                    <androidx.appcompat.widget.AppCompatRadioButton
+                        android:id="@+id/radioBtn_barbershop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radio_barbershop"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_radio_size" />
+
+                </RadioGroup>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroupType">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblCommerceAddressEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/lbl_commerce_address_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblStreet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:text="@string/lbl_commerce_street_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/txtStreet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint="Rua da empresa"
+                        app:layout_constraintEnd_toStartOf="@+id/lblNum"
+                        app:layout_constraintStart_toEndOf="@+id/lblStreet"
+                        app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:text="@string/lbl_commerce_num_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintEnd_toStartOf="@+id/txtNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/txtNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:hint=""
+                        android:minWidth="50dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/lblCommerceAddressEdit" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblDistrict"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:text="@string/lbl_commerce_district_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/txtDistrict"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Bairro da empresa"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/lblDistrict"
+                        app:layout_constraintTop_toBottomOf="@+id/txtStreet" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:text="@string/lbl_commerce_city_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/txtCity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:hint="Cidade da Empresa"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/lblCity"
+                        app:layout_constraintTop_toBottomOf="@+id/txtDistrict" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/lblState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:paddingTop="9dp"
+                        android:paddingBottom="9dp"
+                        android:text="@string/lbl_commerce_state_edit_info"
+                        android:textSize="@dimen/lbl_edit_info_size"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCity" />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/spinnerState"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toEndOf="@+id/lblState"
+                        app:layout_constraintTop_toBottomOf="@+id/txtCity" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

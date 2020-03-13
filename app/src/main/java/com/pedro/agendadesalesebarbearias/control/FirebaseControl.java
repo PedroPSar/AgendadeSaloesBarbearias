@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -313,7 +314,6 @@ public class FirebaseControl {
                             }
                         });
             }catch (NullPointerException e){
-                Log.d("teste", e.getCause().toString());
                 Glide.with(context)
                         .load(R.drawable.img_default)
                         .into(imgView);
@@ -362,6 +362,42 @@ public class FirebaseControl {
             }
 
         });
+    }
+
+    public static void setEditTextInfoInCommerceEditActivity(final Context context,
+                                                             final AppCompatEditText edTxtCommerceName,
+                                                             final AppCompatEditText edTxtCommerceEmail,
+                                                             final AppCompatEditText edTxtCommerceTel,
+                                                             final AppCompatEditText edTxtStreet,
+                                                             final AppCompatEditText edTxtNumber,
+                                                             final AppCompatEditText edTxtDistrict,
+                                                             final AppCompatEditText edTxtCity){
+
+        auth = ConfigurationFirebase.getFirebaseAuth();
+        String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+        databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference().child(COMMERCE_DB).child(userId);
+        databaseReferenceCommerce.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                SalaoBarbearia commerce = dataSnapshot.getValue(SalaoBarbearia.class);
+
+                // Set text
+                edTxtCommerceName.setText(commerce.getName());
+                edTxtCommerceEmail.setText(commerce.getEmail());
+                edTxtCommerceTel.setText(commerce.getTel());
+                edTxtStreet.setText(commerce.getAddress().getStreet());
+                edTxtNumber.setText(commerce.getAddress().getHouseNumber());
+                edTxtDistrict.setText(commerce.getAddress().getDistrict());
+                edTxtCity.setText(commerce.getAddress().getCity());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(context, context.getString(R.string.toast_error_loading_info), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public static void setServiceInCurrentCommerce(final Context context, Service service){

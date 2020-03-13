@@ -69,7 +69,7 @@ public class CommerceViewMainFragment extends Fragment {
         // Load info
         // Load bg img
         FirebaseControl.loadImgFromStorageIntoImageView(getActivity(), FirebaseControl.COMMERCE_DB,
-                FirebaseControl.BG_IMG_NAME + ".jpg", bgImg);
+                FirebaseControl.BG_IMG_NAME, bgImg);
 
         // Load avatar img
         FirebaseControl.loadImgFromStorageIntoImageView(getActivity(), FirebaseControl.COMMERCE_DB,
