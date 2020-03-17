@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,7 +47,9 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
     private AppCompatEditText editTextDistrict;
     private AppCompatEditText editTextCity;
     private AppCompatSpinner spinnerState;
+    private RadioGroup radioGroupType;
     private String commerceState = "";
+    private String type = "";
 
 
     @Override
@@ -56,7 +59,8 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
 
         getObjectsIds();
         loadSpinner();
-        editTextLoadTexts();
+        loadInfo();
+        radioGroupTypeListener();
         btnEditBackgroundClick();
         btnEditLogoClick();
 
@@ -102,6 +106,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         editTextDistrict = findViewById(R.id.txtDistrict);
         editTextCity = findViewById(R.id.txtCity);
         spinnerState = findViewById(R.id.spinnerState);
+        radioGroupType = findViewById(R.id.radioGroupType);
 
     }
 
@@ -146,9 +151,26 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         });
     }
 
-    private void editTextLoadTexts(){
-        FirebaseControl.setEditTextInfoInCommerceEditActivity(this, editTextCommerceName, editTextCommerceEmail,
-                editTextCommerceTel, editTextStreet, editTextNumber, editTextDistrict, editTextCity, spinnerState);
+    private void radioGroupTypeListener(){
+        radioGroupType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioBtn_beautyParlor:
+                        type = SalaoBarbearia.BEAUTY_PARLOR_TYPE;
+                        break;
+
+                    case R.id.radioBtn_barbershop:
+                        type = SalaoBarbearia.BARBERSHOP_TYPE;
+                        break;
+                }
+            }
+        });
+    }
+
+    private void loadInfo(){
+        FirebaseControl.setInfoInCommerceEditActivity(this, editTextCommerceName, editTextCommerceEmail,
+                editTextCommerceTel, editTextStreet, editTextNumber, editTextDistrict, editTextCity, spinnerState, radioGroupType);
     }
 
     private void saveCommerceInfo(){
@@ -167,6 +189,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         commerceInfo.setName(editTextCommerceName.getText().toString());
         commerceInfo.setEmail(editTextCommerceEmail.getText().toString());
         commerceInfo.setTel(editTextCommerceTel.getText().toString());
+        commerceInfo.setType(type);
         commerceInfo.setAddress(address);
 
         commerceInfo.saveCommerce();

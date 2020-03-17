@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.pedro.agendadesalesebarbearias.R;
 import com.pedro.agendadesalesebarbearias.asynctasks.CheckLoginAsyncTask;
+import com.pedro.agendadesalesebarbearias.control.ConfigurationFirebase;
 
 public class CheckLoginActivity extends AppCompatActivity {
 

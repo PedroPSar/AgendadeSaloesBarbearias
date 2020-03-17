@@ -3,6 +3,8 @@ package com.pedro.agendadesalesebarbearias.control;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,6 +43,9 @@ import com.pedro.agendadesalesebarbearias.model.Client;
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.SalaoBarbearia;
 import com.pedro.agendadesalesebarbearias.model.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FirebaseControl {
 
@@ -349,11 +354,6 @@ public class FirebaseControl {
                     rvServices.setLayoutManager(servicesLM);
                     rvServices.setAdapter(servicesAdapter);
 
-                    // Load employess
-                    RvEmployeesAdapter employeesAdapter = new RvEmployeesAdapter(commerce.getProfessional(), context);
-                    RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                    rvEmployees.setLayoutManager(employeesLM);
-                    rvEmployees.setAdapter(employeesAdapter);
                 }
             }
 
@@ -365,7 +365,51 @@ public class FirebaseControl {
         });
     }
 
-    public static void setEditTextInfoInCommerceEditActivity(final Context context,
+    public static void setInfoInRvEmployees(final Context context, final RecyclerView rvEmployees){
+
+        auth = ConfigurationFirebase.getFirebaseAuth();
+
+        if(auth != null){
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+            databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
+
+            DatabaseReference childRef = databaseReferenceCommerce.child(COMMERCE_DB)
+                    .child(userId).child(EMPLOYEES_DB);
+
+            childRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        ArrayList<Professional> employeesList = new ArrayList<>();
+
+                        for ( DataSnapshot child : dataSnapshot.getChildren() ) {
+                            Professional employee = child.getValue(Professional.class);
+                            employeesList.add(employee);
+                            Log.d("teste", employee.getName());
+                            Log.d("teste", employeesList.size() + " tamanho");
+                        }
+
+                        // Load employess
+                        RvEmployeesAdapter employeesAdapter = new RvEmployeesAdapter(employeesList, context);
+                        RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                        rvEmployees.setLayoutManager(employeesLM);
+                        rvEmployees.setAdapter(employeesAdapter);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+        }
+
+    }
+
+    public static void setInfoInCommerceEditActivity(final Context context,
                                                              final AppCompatEditText edTxtCommerceName,
                                                              final AppCompatEditText edTxtCommerceEmail,
                                                              final AppCompatEditText edTxtCommerceTel,
@@ -373,7 +417,8 @@ public class FirebaseControl {
                                                              final AppCompatEditText edTxtNumber,
                                                              final AppCompatEditText edTxtDistrict,
                                                              final AppCompatEditText edTxtCity,
-                                                             final AppCompatSpinner spinnerStates){
+                                                             final AppCompatSpinner spinnerStates,
+                                                             final RadioGroup radioGroupType){
 
         auth = ConfigurationFirebase.getFirebaseAuth();
         String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
@@ -384,6 +429,14 @@ public class FirebaseControl {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 SalaoBarbearia commerce = dataSnapshot.getValue(SalaoBarbearia.class);
 
+                // Get if type 1 = BEAUTY_PARLOR_TYPE or type 2 = BARBERSHOP_TYPE
+                int id = 0;
+                if(commerce.getType().equals(SalaoBarbearia.BEAUTY_PARLOR_TYPE)){
+                    id = R.id.radioBtn_beautyParlor;
+                }else if(commerce.getType().equals(SalaoBarbearia.BARBERSHOP_TYPE)){
+                    id = R.id.radioBtn_barbershop;
+                }
+
                 // Set text
                 edTxtCommerceName.setText(commerce.getName());
                 edTxtCommerceEmail.setText(commerce.getEmail());
@@ -393,6 +446,7 @@ public class FirebaseControl {
                 edTxtDistrict.setText(commerce.getAddress().getDistrict());
                 edTxtCity.setText(commerce.getAddress().getCity());
                 spinnerStates.setSelection(AppControl.getIndexOf(Address.states, commerce.getAddress().getState()));
+                radioGroupType.check(id);
             }
 
             @Override
@@ -407,8 +461,10 @@ public class FirebaseControl {
         String currentUserId = EncoderBase64.encoderBase64( auth.getCurrentUser().getEmail() );
         databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
 
-        databaseReferenceCommerce.child(COMMERCE_DB)
-                .child(currentUserId).child(SERVICES_DB).setValue(service)
+        DatabaseReference childRef = databaseReferenceCommerce.child(COMMERCE_DB)
+                .child(currentUserId).child(SERVICES_DB);
+
+        childRef.push().setValue(service)
         .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -428,8 +484,10 @@ public class FirebaseControl {
     public static void setEmployeeInCurrentCommerce(final Context context, Professional employee){
         String currentUserId = EncoderBase64.encoderBase64( auth.getCurrentUser().getEmail() );
         databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
-        databaseReferenceCommerce.child(COMMERCE_DB)
-                .child(currentUserId).child(EMPLOYEES_DB).setValue(employee)
+        DatabaseReference childRef = databaseReferenceCommerce.child(COMMERCE_DB)
+                .child(currentUserId).child(EMPLOYEES_DB);
+
+        childRef.push().setValue(employee)
         .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

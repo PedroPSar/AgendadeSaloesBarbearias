@@ -75,8 +75,11 @@ public class CommerceViewMainFragment extends Fragment {
         FirebaseControl.loadImgFromStorageIntoImageView(getActivity(), FirebaseControl.COMMERCE_DB,
                 FirebaseControl.AVATAR_IMG_NAME, avatarImg);
 
-        // Load text and recycler views
+        // Load texts
         FirebaseControl.setCommerceInfo(getActivity(), txtRating, txtCommerceName, rvServices, rvEmployees);
+
+        // Load employees recycler view
+        FirebaseControl.setInfoInRvEmployees(getActivity(), rvEmployees);
 
         // Button addServices open Dialog
         btnAddServicesClick();
@@ -118,7 +121,8 @@ public class CommerceViewMainFragment extends Fragment {
         btnAddEmployees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity());
+                final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(),
+                        R.style.MaterialAlertDialogCustom);
                 builder.setTitle(getActivity().getString(R.string.dialog_add_employees_title));
 
                 LayoutInflater layoutInflater = getActivity().getLayoutInflater();
@@ -161,6 +165,10 @@ public class CommerceViewMainFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void loadServicesList(){
 
     }
 

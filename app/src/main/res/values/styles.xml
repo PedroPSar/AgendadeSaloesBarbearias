@@ -35,4 +35,17 @@
         <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
     </style>
 
+    <style name="MaterialAlertDialogCustom" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+        <item name="android:background">@android:color/white</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialTitleStyle</item>
+
+    </style>
+
+    <style name="MaterialTitleStyle" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+
+        <item name="android:textColor">@color/colorPrimary</item>
+
+    </style>
+
 </resources>
