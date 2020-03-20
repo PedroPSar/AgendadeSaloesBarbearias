@@ -18,6 +18,8 @@ public class SalaoBarbearia {
     private ArrayList<Professional> professional;
     private ArrayList<Service> services;
     private Address address;
+    private String openingTime;
+    private String closingTime;
     private float rating;
 
     public static final String BEAUTY_PARLOR_TYPE = "1";
@@ -109,6 +111,22 @@ public class SalaoBarbearia {
 
     public void setRating(float rating) {
         this.rating = rating;
+    }
+
+    public String getOpeningTime() {
+        return openingTime;
+    }
+
+    public void setOpeningTime(String openingTime) {
+        this.openingTime = openingTime;
+    }
+
+    public String getClosingTime() {
+        return closingTime;
+    }
+
+    public void setClosingTime(String closingTime) {
+        this.closingTime = closingTime;
     }
 
     public void saveCommerce(){

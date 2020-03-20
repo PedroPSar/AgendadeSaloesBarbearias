@@ -28,6 +28,8 @@
     <string name="hint_city">Cidade</string>
     <string name="hint_state">Estado</string>
     <string name="tel_edit_hint">Telefone</string>
+    <string name="open_time_edit_hint">Horário de abertura</string>
+    <string name="close_time_edit_hint">Horário de fechamento</string>
 
     <!-- FirebaseControl -->
     <string name="sign_up_is_successful">Cadastro realizado com sucesso</string>
@@ -91,6 +93,8 @@
     <string name="lbl_commerce_district_edit_info">Bairro:</string>
     <string name="lbl_commerce_city_edit_info">Cidade:</string>
     <string name="lbl_commerce_state_edit_info">Estado:</string>
+    <string name="lbl_commerce_ed_time_edit_info">Horário de Encerramento</string>
+    <string name="lbl_commerce_op_time_edit_info">Horário de Abertura</string>
     <string name="toast_text_img_upload_in_progress">Upload em progresso</string>
 
     <!-- EditCommerce Info Menu -->
@@ -125,5 +129,6 @@
     <string name="one_hundred_and_fifty_minutes">2 horas e 30 minutos</string>
     <string name="one_hundred_and_eighty_minutes">3 horas</string>
     <string name="lbl_choose_employees_for_service">Selecione os empregados que farão o serviço</string>
+
 
 </resources>

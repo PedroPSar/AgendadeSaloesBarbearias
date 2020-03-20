@@ -147,6 +147,56 @@
                     app:layout_constraintTop_toBottomOf="@+id/lblCommerceTelephoneEdit" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceOpTimeEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_op_time_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceTelephoneEdit" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextOpTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="8dp"
+                    android:drawableStart="@drawable/ic_op_time_black_24dp"
+                    android:drawablePadding="@dimen/icon_edit_text_padding"
+                    android:hint="@string/open_time_edit_hint"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceOpTimeEdit"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lblCommerceEdTimeEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/lbl_commerce_ed_time_edit_info"
+                    android:textSize="@dimen/lbl_edit_info_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextOpTime" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editTextEdTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="24dp"
+                    android:drawableStart="@drawable/ic_op_time_black_24dp"
+                    android:drawablePadding="@dimen/icon_edit_text_padding"
+                    android:hint="@string/close_time_edit_hint"
+                    app:backgroundTint="@color/colorPrimary"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lblCommerceEdTimeEdit"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/lblCommerceTypeEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +205,7 @@
                     android:text="@string/lbl_commerce_type_edit_info"
                     android:textSize="@dimen/lbl_edit_info_size"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCommerceTelephoneEdit" />
+                    app:layout_constraintTop_toBottomOf="@+id/editTextEdTime" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupType"

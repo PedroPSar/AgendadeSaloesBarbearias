@@ -92,17 +92,41 @@
                 android:inputType="textPassword"
                 app:backgroundTint="@color/colorPrimary" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/editTextTel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="24dp"
-            android:drawableStart="@drawable/ic_phone_24dp"
-            android:drawablePadding="@dimen/icon_edit_text_padding"
-            android:hint="@string/tel_edit_hint"
-            app:backgroundTint="@color/colorPrimary" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_phone_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/tel_edit_hint"
+                app:backgroundTint="@color/colorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextOpTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:drawableStart="@drawable/ic_op_time_black_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/open_time_edit_hint"
+                app:backgroundTint="@color/colorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextEdTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:drawableStart="@drawable/ic_op_time_black_24dp"
+                android:drawablePadding="@dimen/icon_edit_text_padding"
+                android:hint="@string/close_time_edit_hint"
+                app:backgroundTint="@color/colorPrimary" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txtLabelAddress"

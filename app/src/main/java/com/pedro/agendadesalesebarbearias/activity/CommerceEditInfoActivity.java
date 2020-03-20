@@ -42,6 +42,8 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
     private AppCompatEditText editTextCommerceName;
     private AppCompatEditText editTextCommerceEmail;
     private AppCompatEditText editTextCommerceTel;
+    private AppCompatEditText editTextCommerceOpTime;
+    private AppCompatEditText editTextCommerceCloseTime;
     private AppCompatEditText editTextStreet;
     private AppCompatEditText editTextNumber;
     private AppCompatEditText editTextDistrict;
@@ -101,6 +103,8 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         editTextCommerceName = findViewById(R.id.txtCommerceNameEdit);
         editTextCommerceEmail = findViewById(R.id.txtCommerceEmailEdit);
         editTextCommerceTel = findViewById(R.id.txtCommerceTelephoneEdit);
+        editTextCommerceOpTime = findViewById(R.id.editTextOpTime);
+        editTextCommerceCloseTime = findViewById(R.id.editTextEdTime);
         editTextStreet = findViewById(R.id.txtStreet);
         editTextNumber = findViewById(R.id.txtNumber);
         editTextDistrict = findViewById(R.id.txtDistrict);
@@ -170,7 +174,7 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
 
     private void loadInfo(){
         FirebaseControl.setInfoInCommerceEditActivity(this, editTextCommerceName, editTextCommerceEmail,
-                editTextCommerceTel, editTextStreet, editTextNumber, editTextDistrict, editTextCity, spinnerState, radioGroupType);
+                editTextCommerceTel, editTextCommerceOpTime, editTextCommerceCloseTime, editTextStreet, editTextNumber, editTextDistrict, editTextCity, spinnerState, radioGroupType);
     }
 
     private void saveCommerceInfo(){
@@ -189,6 +193,8 @@ public class CommerceEditInfoActivity extends AppCompatActivity {
         commerceInfo.setName(editTextCommerceName.getText().toString());
         commerceInfo.setEmail(editTextCommerceEmail.getText().toString());
         commerceInfo.setTel(editTextCommerceTel.getText().toString());
+        commerceInfo.setOpeningTime(editTextCommerceOpTime.getText().toString());
+        commerceInfo.setClosingTime(editTextCommerceCloseTime.getText().toString());
         commerceInfo.setType(type);
         commerceInfo.setAddress(address);
 

@@ -490,6 +490,8 @@ public class FirebaseControl {
                                                              final AppCompatEditText edTxtCommerceName,
                                                              final AppCompatEditText edTxtCommerceEmail,
                                                              final AppCompatEditText edTxtCommerceTel,
+                                                             final AppCompatEditText edTxtCommerceOpTime,
+                                                             final AppCompatEditText edTxtCommerceCloseTime,
                                                              final AppCompatEditText edTxtStreet,
                                                              final AppCompatEditText edTxtNumber,
                                                              final AppCompatEditText edTxtDistrict,
@@ -518,6 +520,8 @@ public class FirebaseControl {
                 edTxtCommerceName.setText(commerce.getName());
                 edTxtCommerceEmail.setText(commerce.getEmail());
                 edTxtCommerceTel.setText(commerce.getTel());
+                edTxtCommerceOpTime.setText(commerce.getOpeningTime());
+                edTxtCommerceCloseTime.setText(commerce.getClosingTime());
                 edTxtStreet.setText(commerce.getAddress().getStreet());
                 edTxtNumber.setText(commerce.getAddress().getHouseNumber());
                 edTxtDistrict.setText(commerce.getAddress().getDistrict());
