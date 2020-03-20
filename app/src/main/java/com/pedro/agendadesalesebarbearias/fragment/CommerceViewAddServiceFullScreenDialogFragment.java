@@ -96,27 +96,37 @@ public class CommerceViewAddServiceFullScreenDialogFragment extends DialogFragme
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(AppControl.professionals == null){
+                    Toast.makeText(getActivity(), getString(R.string.toast_text_employees_is_empty),
+                            Toast.LENGTH_SHORT).show();
+                }else{
 
-                List<Professional> list = Arrays.asList(AppControl.professionals);
-                ArrayList<Professional> employeesList = new ArrayList<>(list);
+                    List<Professional> list = Arrays.asList(AppControl.professionals);
+                    ArrayList<Professional> employeesList = new ArrayList<>();
 
-                for (Professional pro: employeesList) {
-                    if(pro != null){
-                        Log.d("teste", "Pro: " + pro.getName());
+                    for (Professional p : list) {
+                        if(p != null){
+                            employeesList.add(p);
+                        }
+                    }
+
+                    if(employeesList.size() != 0){
+                        Service service = new Service();
+                        service.setName(editTextServiceName.getText().toString());
+                        service.setPrice(editTextServicePrice.getText().toString());
+                        service.setServiceTime(serviceTime);
+                        service.setProfessionals(employeesList);
+
+                        // Add Service in commerce database in firebase
+                        FirebaseControl.setServiceInCurrentCommerce(getActivity(), service);
+
+                        dismiss();
+                    }else{
+                        Toast.makeText(getActivity(), getString(R.string.toast_text_employees_is_empty),
+                                Toast.LENGTH_SHORT).show();
                     }
 
                 }
-
-                Service service = new Service();
-                service.setName(editTextServiceName.getText().toString());
-                service.setPrice(editTextServicePrice.getText().toString());
-                service.setServiceTime(serviceTime);
-                service.setProfessionals(employeesList);
-
-                // Add Service in commerce database in firebase
-                FirebaseControl.setServiceInCurrentCommerce(getActivity(), service);
-
-                dismiss();
             }
         });
         return view;

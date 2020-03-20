@@ -4,6 +4,7 @@ package com.pedro.agendadesalesebarbearias.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -95,6 +96,14 @@ public class CommerceViewMainFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        rvServices.invalidate();
+        rvEmployees.invalidate();
+    }
+
     private void getObjectsIds(View view){
         bgImg = view.findViewById(R.id.bgImg);
         avatarImg = view.findViewById(R.id.avatar_img);
@@ -124,8 +133,7 @@ public class CommerceViewMainFragment extends Fragment {
         btnAddEmployees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(getActivity(),
-                        R.style.MaterialAlertDialogCustom);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle(getActivity().getString(R.string.dialog_add_employees_title));
 
                 LayoutInflater layoutInflater = getActivity().getLayoutInflater();
@@ -136,10 +144,13 @@ public class CommerceViewMainFragment extends Fragment {
                 Button btnCancel = dialogView.findViewById(R.id.btnCancel);
                 Button btnAdd = dialogView.findViewById(R.id.btnAdd);
 
+                builder.setView(dialogView);
+                final AlertDialog dialogShow = builder.show();
+
                 btnCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        dialogShow.dismiss();
                     }
                 });
 
@@ -151,11 +162,12 @@ public class CommerceViewMainFragment extends Fragment {
                         employee.setWork(editTextEmployeeWork.getText().toString());
 
                         FirebaseControl.setEmployeeInCurrentCommerce(getActivity(), employee);
+
+                        FirebaseControl.setInfoInRvEmployees(getActivity(), rvEmployees);
+                        dialogShow.dismiss();
                     }
                 });
 
-                builder.setView(dialogView);
-                builder.show();
             }
         });
     }
@@ -168,10 +180,6 @@ public class CommerceViewMainFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-    }
-
-    private void loadServicesList(){
 
     }
 
