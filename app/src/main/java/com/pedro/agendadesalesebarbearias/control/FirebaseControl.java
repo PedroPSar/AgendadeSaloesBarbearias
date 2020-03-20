@@ -37,6 +37,7 @@ import com.pedro.agendadesalesebarbearias.activity.ClientUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.CommerceUserMainActivity;
 import com.pedro.agendadesalesebarbearias.activity.MainActivity;
 import com.pedro.agendadesalesebarbearias.adapter.RvEmployeesAdapter;
+import com.pedro.agendadesalesebarbearias.adapter.RvEmployeesForAddAdapter;
 import com.pedro.agendadesalesebarbearias.adapter.RvServicesAdapter;
 import com.pedro.agendadesalesebarbearias.model.Address;
 import com.pedro.agendadesalesebarbearias.model.Client;
@@ -330,8 +331,7 @@ public class FirebaseControl {
     }
 
     public static void setCommerceInfo(final Context context,
-                                       final AppCompatTextView txtRating, final AppCompatTextView txtCommerceName,
-                                       final RecyclerView rvServices, final RecyclerView rvEmployees){
+                                       final AppCompatTextView txtRating, final AppCompatTextView txtCommerceName){
 
         auth = ConfigurationFirebase.getFirebaseAuth();
         String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
@@ -348,18 +348,13 @@ public class FirebaseControl {
                     txtRating.setText(String.valueOf(commerce.getRating()));
                     txtCommerceName.setText(commerce.getName());
 
-                    // Load services rv
-                    RvServicesAdapter servicesAdapter = new RvServicesAdapter(commerce.getServices(), context);
-                    RecyclerView.LayoutManager servicesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                    rvServices.setLayoutManager(servicesLM);
-                    rvServices.setAdapter(servicesAdapter);
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(context, context.getString(R.string.toast_error_loading_info), Toast.LENGTH_SHORT).show();
+                throw databaseError.toException(); //Don't ignore errors
             }
 
         });
@@ -386,8 +381,6 @@ public class FirebaseControl {
                         for ( DataSnapshot child : dataSnapshot.getChildren() ) {
                             Professional employee = child.getValue(Professional.class);
                             employeesList.add(employee);
-                            Log.d("teste", employee.getName());
-                            Log.d("teste", employeesList.size() + " tamanho");
                         }
 
                         // Load employess
@@ -400,13 +393,97 @@ public class FirebaseControl {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                    throw databaseError.toException();
                 }
             });
 
 
         }
 
+    }
+
+    public static void setInfoInRvServices(final Context context, final RecyclerView rvServices){
+
+        auth = ConfigurationFirebase.getFirebaseAuth();
+
+        if(auth != null){
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+            databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
+
+            DatabaseReference childRef = databaseReferenceCommerce.child(COMMERCE_DB)
+                    .child(userId).child(SERVICES_DB);
+
+            childRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        ArrayList<Service> servicesList = new ArrayList<>();
+
+                        for ( DataSnapshot child : dataSnapshot.getChildren() ) {
+                            Service service = child.getValue(Service.class);
+                            servicesList.add(service);
+                        }
+
+                        // Load employess
+                        RvServicesAdapter servicesAdapter = new RvServicesAdapter(servicesList, context);
+                        RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                        rvServices.setLayoutManager(employeesLM);
+                        rvServices.setAdapter(servicesAdapter);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    throw databaseError.toException();
+                }
+            });
+
+
+        }
+
+    }
+
+    public static void setEmployeesInRvEmployeesForAdd(final Context context, final RecyclerView rvEmployees){
+        auth = ConfigurationFirebase.getFirebaseAuth();
+
+        if(auth != null) {
+            String userId = EncoderBase64.encoderBase64(auth.getCurrentUser().getEmail());
+
+            databaseReferenceCommerce = ConfigurationFirebase.getFirebaseReference();
+
+            DatabaseReference childRef = databaseReferenceCommerce.child(COMMERCE_DB)
+                    .child(userId).child(EMPLOYEES_DB);
+
+            childRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        ArrayList<Professional> employeesList = new ArrayList<>();
+
+                        for ( DataSnapshot child : dataSnapshot.getChildren() ) {
+                            Professional employee = child.getValue(Professional.class);
+                            employeesList.add(employee);
+                        }
+
+                        // Set size in professional array
+                        AppControl.professionals = new Professional[employeesList.size()];
+
+                        // Load employess
+                        RvEmployeesForAddAdapter employeesAdapter = new RvEmployeesForAddAdapter(employeesList, context);
+                        RecyclerView.LayoutManager  employeesLM = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+                        rvEmployees.setLayoutManager(employeesLM);
+                        rvEmployees.setAdapter(employeesAdapter);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    throw databaseError.toException();
+                }
+            });
+
+        }
     }
 
     public static void setInfoInCommerceEditActivity(final Context context,

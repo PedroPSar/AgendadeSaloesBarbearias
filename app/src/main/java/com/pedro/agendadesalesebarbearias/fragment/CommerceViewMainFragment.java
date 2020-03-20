@@ -76,10 +76,13 @@ public class CommerceViewMainFragment extends Fragment {
                 FirebaseControl.AVATAR_IMG_NAME, avatarImg);
 
         // Load texts
-        FirebaseControl.setCommerceInfo(getActivity(), txtRating, txtCommerceName, rvServices, rvEmployees);
+        FirebaseControl.setCommerceInfo(getActivity(), txtRating, txtCommerceName);
 
         // Load employees recycler view
         FirebaseControl.setInfoInRvEmployees(getActivity(), rvEmployees);
+
+        // Load services recycler view
+        FirebaseControl.setInfoInRvServices(getActivity(), rvServices);
 
         // Button addServices open Dialog
         btnAddServicesClick();

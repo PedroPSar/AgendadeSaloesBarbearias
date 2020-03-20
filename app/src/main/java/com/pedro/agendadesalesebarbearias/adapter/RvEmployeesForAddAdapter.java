@@ -37,7 +37,7 @@ public class RvEmployeesForAddAdapter extends RecyclerView.Adapter<RvEmployeesFo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RvEmployeesForAddAdapter.RvEmployeesForAddAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RvEmployeesForAddAdapter.RvEmployeesForAddAdapterViewHolder holder, final int position) {
 
         final int fPosition = position;
         // Get info
@@ -53,9 +53,9 @@ public class RvEmployeesForAddAdapter extends RecyclerView.Adapter<RvEmployeesFo
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    AppControl.professionals.add(fPosition, professional);
+                    AppControl.professionals[position] = professional;
                 }else{
-                    AppControl.professionals.remove(fPosition);
+                    AppControl.professionals[position] = null;
                 }
             }
         });

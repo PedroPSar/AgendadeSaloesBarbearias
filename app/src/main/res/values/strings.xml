@@ -123,5 +123,6 @@
     <string name="one_hundred_and_twenty_minutes">2 horas</string>
     <string name="one_hundred_and_fifty_minutes">2 horas e 30 minutos</string>
     <string name="one_hundred_and_eighty_minutes">3 horas</string>
+    <string name="lbl_choose_employees_for_service">Selecione os empregados que farão o serviço</string>
 
 </resources>

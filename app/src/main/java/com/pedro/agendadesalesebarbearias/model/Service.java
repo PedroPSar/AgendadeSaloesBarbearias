@@ -8,7 +8,7 @@ public class Service {
     private String price;
 
     // Service time in 30 minute units
-    private int serviceTime;
+    private int serviceTime = 0;
     private ArrayList<Professional> professionals;
 
     public static final String[] TIMES = {

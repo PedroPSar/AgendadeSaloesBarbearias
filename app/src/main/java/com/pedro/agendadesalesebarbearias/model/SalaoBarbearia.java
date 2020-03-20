@@ -77,6 +77,7 @@ public class SalaoBarbearia {
         this.type = type;
     }
 
+    @Exclude
     public ArrayList<Professional> getProfessional() {
         return professional;
     }
@@ -85,6 +86,7 @@ public class SalaoBarbearia {
         this.professional = professional;
     }
 
+    @Exclude
     public ArrayList<Service> getServices() {
         return services;
     }

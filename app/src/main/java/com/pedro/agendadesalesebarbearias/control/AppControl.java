@@ -6,16 +6,11 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
-import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
-import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.pedro.agendadesalesebarbearias.model.Address;
 import com.pedro.agendadesalesebarbearias.model.Professional;
 import com.pedro.agendadesalesebarbearias.model.Service;
 
@@ -24,7 +19,7 @@ import java.util.List;
 
 public class AppControl {
 
-    public static ArrayList<Professional> professionals;
+    public static Professional[] professionals;
 
     public static String getExtension(Context context, Uri uri){
         ContentResolver cr = context.getContentResolver();
